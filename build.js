@@ -93,22 +93,34 @@ function rosterCard(c, headingTag) {
 }
 
 /* ----------------------- team member --------------------------- */
-function teamMember(m, headingTag) {
-  const h = headingTag || "h2";
+function teamMember(m) {
+  const pid = "tm-" + attr(m.id);
+  const alt = attr(m.imageAlt || ("Portrait of " + m.name));
   const lines = [];
-  lines.push(`        <article class="team-member" id="${attr(m.id)}">`);
-  lines.push(`          <div class="team-member__media">`);
-  lines.push(`            <div class="img-window ratio-3-4 img-mono">`);
-  lines.push(`              <img src="${attr(m.image)}" alt="${attr(m.imageAlt || ("Portrait of " + m.name))}" width="600" height="800" loading="lazy" decoding="async">`);
+  lines.push(`        <article class="team-member" id="${attr(m.id)}" data-team-member>`);
+  // Summary row (thumbnail + name/role). On mobile it's the accordion tab;
+  // on desktop the thumbnail + chevron are hidden and the name/role sit in the card.
+  lines.push(`          <h3 class="team-member__head">`);
+  lines.push(`            <button class="team-member__summary" type="button" aria-expanded="true" aria-controls="${pid}">`);
+  lines.push(`              <span class="team-member__thumb img-mono" aria-hidden="true"><img src="${attr(m.image)}" alt="" width="140" height="176" loading="lazy" decoding="async"></span>`);
+  lines.push(`              <span class="team-member__id">`);
+  lines.push(`                <span class="team-member__name">${esc(m.name)}</span>`);
+  if (has(m.role)) lines.push(`                <span class="team-member__role">${esc(m.role)}</span>`);
+  lines.push(`              </span>`);
+  lines.push(`              <span class="team-member__chev" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span>`);
+  lines.push(`            </button>`);
+  lines.push(`          </h3>`);
+  // Detail (full portrait + bio). Collapsed on mobile via main.js; always shown on desktop / without JS.
+  lines.push(`          <div class="team-member__detail" id="${pid}">`);
+  lines.push(`            <div class="team-member__media">`);
+  lines.push(`              <div class="img-window ratio-3-4 img-mono">`);
+  lines.push(`                <img src="${attr(m.image)}" alt="${alt}" width="600" height="800" loading="lazy" decoding="async">`);
+  lines.push(`              </div>`);
+  if (has(m.photoCredit)) lines.push(`              <p class="team-member__credit">Photography by ${esc(m.photoCredit)}</p>`);
   lines.push(`            </div>`);
-  if (has(m.photoCredit)) {
-    lines.push(`            <p class="team-member__credit">Photography by ${esc(m.photoCredit)}</p>`);
-  }
-  lines.push(`          </div>`);
-  lines.push(`          <div>`);
-  lines.push(`            <${h} class="team-member__name">${esc(m.name)}</${h}>`);
-  if (has(m.role)) lines.push(`            <p class="team-member__role">${esc(m.role)}</p>`);
-  if (has(m.bio)) lines.push(`            <p class="team-member__bio">${esc(m.bio)}</p>`);
+  lines.push(`            <div class="team-member__copy">`);
+  if (has(m.bio)) lines.push(`              <p class="team-member__bio">${esc(m.bio)}</p>`);
+  lines.push(`            </div>`);
   lines.push(`          </div>`);
   lines.push(`        </article>`);
   return lines.join("\n");
@@ -309,7 +321,7 @@ function main() {
     ["the-middle-rocks/index.html", "FILTER", filterButtons(clients)],
     ["index.html", "HOME_ROSTER", homeRosterSection(featured)],
     ["index.html", "TEAM_PREVIEW", team.map((m) => miniMember(m)).join("\n")],
-    ["about/index.html", "TEAM", team.map((m) => teamMember(m, "h2")).join("\n")]
+    ["about/index.html", "TEAM", team.map((m) => teamMember(m)).join("\n")]
   );
 
   let ok = 0;

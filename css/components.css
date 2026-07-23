@@ -406,37 +406,77 @@
 .roster-filter__select:hover { border-color: var(--ink); }
 .roster-filter__select:focus-visible { outline: var(--focus); outline-offset: 2px; }
 
-/* --------------------------- Team cards ------------------------ */
-.team-grid {
-  display: grid;
-  gap: clamp(3rem, 2rem + 5vw, 6rem);
+/* --------------------------- Team ------------------------------
+   DESKTOP: portrait beside the bio (full card, always shown).
+   MOBILE (<=620px): an accordion - a thumbnail + name/role summary
+   that taps open to reveal the full portrait + bio. Enhanced by
+   main.js; without JS every member stays fully expanded. */
+.team-grid { display: grid; gap: clamp(2rem, 1.5rem + 3vw, 4rem); }
+
+.team-member__head { margin: 0; }
+.team-member__summary {
+  display: flex; align-items: center; gap: var(--space-m);
+  width: 100%; padding: var(--space-s) 0;
+  background: none; border: 0; color: inherit;
+  font: inherit; text-align: left; cursor: pointer;
 }
-/* Each member: portrait beside the bio (constrained, never full-bleed) */
-.team-member {
-  display: grid;
-  grid-template-columns: minmax(0, 300px) 1fr;
-  gap: clamp(1.5rem, 1rem + 3vw, 4rem);
-  align-items: start;
+.team-member__thumb {
+  flex: 0 0 auto; width: 68px; height: 86px;
+  overflow: hidden; background: var(--paper-deep);
 }
-.team-member__media { position: relative; }
-@media (max-width: 620px) {
-  .team-member { grid-template-columns: 1fr; gap: var(--space-l); }
-  .team-member__media { max-width: 280px; }
+.team-member__thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.team-member__id { flex: 1 1 auto; min-width: 0; }
+.team-member__name {
+  display: block;
+  font-family: var(--font-display); font-size: var(--step-2);
+  line-height: 1.08; color: var(--ink);
 }
-.team-member__credit {
-  font-size: 0.72rem;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--ink-faint);
-  margin-top: 0.5rem;
-}
-.team-member__name { font-size: var(--step-3); margin-top: 0.25rem; }
 .team-member__role {
-  font-family: var(--font-sans);
-  font-size: var(--step--1);
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--ink-muted);
-  margin-top: 0.6rem;
+  display: block; margin-top: 0.4rem;
+  font-family: var(--font-sans); font-size: var(--step--1);
+  letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink-muted);
 }
-.team-member__bio { margin-top: var(--space-s); max-width: 42ch; color: var(--ink-soft); }
+.team-member__chev {
+  flex: 0 0 auto; display: inline-flex; color: var(--ink-muted);
+  transition: transform var(--dur-fast) var(--ease);
+}
+.team-member__chev svg { width: 22px; height: 22px; }
+.team-member.is-open .team-member__chev { transform: rotate(180deg); }
+
+.team-member__media { position: relative; }
+.team-member__media .img-window { max-width: 300px; }
+.team-member__detail { margin-top: var(--space-s); }
+.team-member__credit {
+  font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--ink-faint); margin-top: 0.5rem;
+}
+.team-member__bio { margin-top: var(--space-m); max-width: 46ch; color: var(--ink-soft); }
+
+/* Collapse to an accordion only when JS is active, on phones. */
+@media (max-width: 620px) {
+  html.js .team-member__detail { display: none; }
+  html.js .team-member.is-open .team-member__detail { display: block; }
+  .team-member + .team-member { border-top: 1px solid var(--rule); padding-top: var(--space-s); }
+}
+
+/* Desktop: full card, no accordion chrome. */
+@media (min-width: 621px) {
+  .team-member {
+    display: grid;
+    grid-template-columns: minmax(0, 300px) 1fr;
+    grid-template-areas: "media id" "media copy";
+    column-gap: clamp(1.5rem, 1rem + 3vw, 4rem);
+    align-items: start;
+  }
+  .team-member__head,
+  .team-member__summary,
+  .team-member__detail { display: contents; }
+  .team-member__summary { cursor: default; }
+  .team-member__thumb,
+  .team-member__chev { display: none; }
+  .team-member__id { grid-area: id; }
+  .team-member__media { grid-area: media; }
+  .team-member__copy { grid-area: copy; }
+  .team-member__name { font-size: var(--step-3); line-height: 1.05; margin-top: 0.25rem; }
+  .team-member__role { margin-top: 0.6rem; }
+}
