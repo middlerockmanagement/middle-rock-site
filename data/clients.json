@@ -8,7 +8,7 @@
         "MG Fantasy Author",
         "Screenwriter"
       ],
-      "image": "/assets/images/placeholders/philip-asta.svg",
+      "image": "/assets/images/placeholders/philip-asta.webp",
       "imageAlt": "Portrait of Philip Asta",
       "primaryUrl": null,
       "primaryLabel": null,
@@ -39,13 +39,13 @@
       "order": 20
     },
     {
-      "id": "pam-and-lindsay",
-      "name": "Pam Bassuk & Lindsay Jean Michelle",
+      "id": "pam-bassuk",
+      "name": "Pam Bassuk",
       "disciplines": [
-        "Animation Writing Team"
+        "Animation Writer"
       ],
-      "image": "/assets/images/placeholders/pam-and-lindsay.svg",
-      "imageAlt": "Portrait of Pam Bassuk and Lindsay Jean Michelle",
+      "image": "/assets/images/placeholders/pam-bassuk.webp",
+      "imageAlt": "Portrait of Pam Bassuk",
       "primaryUrl": "https://www.pamandlindsay.com/",
       "primaryLabel": "Website",
       "secondaryUrl": null,
@@ -65,7 +65,7 @@
         "Filmmaker",
         "Screenwriter"
       ],
-      "image": "/assets/images/placeholders/tiff-campbell.svg",
+      "image": "/assets/images/placeholders/tiff-campbell.webp",
       "imageAlt": "Portrait of Tiff Campbell",
       "primaryUrl": "https://www.imdb.com/name/nm10945018/",
       "primaryLabel": "IMDb",
@@ -83,7 +83,7 @@
       "disciplines": [
         "Author"
       ],
-      "image": "/assets/images/placeholders/jake-carr.svg",
+      "image": "/assets/images/placeholders/jake-carr.webp",
       "imageAlt": "Portrait of Jake Carr",
       "primaryUrl": "https://jaketreks.com/",
       "primaryLabel": "Website",
@@ -101,7 +101,7 @@
       "disciplines": [
         "Screenwriter"
       ],
-      "image": "/assets/images/placeholders/cassi-jerkins.svg",
+      "image": "/assets/images/placeholders/cassi-jerkins.webp",
       "imageAlt": "Portrait of Cassi Jerkins",
       "primaryUrl": "https://www.imdb.com/name/nm5325327/",
       "primaryLabel": "IMDb",
@@ -112,6 +112,24 @@
       "status": null,
       "featured": true,
       "order": 60
+    },
+    {
+      "id": "lindsay-jean-michelle",
+      "name": "Lindsay Jean Michelle",
+      "disciplines": [
+        "Animation Writer"
+      ],
+      "image": "/assets/images/placeholders/lindsay-jean-michelle.webp",
+      "imageAlt": "Portrait of Lindsay Jean Michelle",
+      "primaryUrl": "https://www.pamandlindsay.com/",
+      "primaryLabel": "Website",
+      "secondaryUrl": null,
+      "secondaryLabel": null,
+      "coManagement": null,
+      "bio": null,
+      "status": null,
+      "featured": false,
+      "order": 70
     },
     {
       "id": "carlo-nicdao",
@@ -130,7 +148,7 @@
       "bio": null,
       "status": null,
       "featured": true,
-      "order": 70
+      "order": 80
     },
     {
       "id": "tommy-schneiders",
@@ -138,7 +156,7 @@
       "disciplines": [
         "Animation Writer"
       ],
-      "image": "/assets/images/placeholders/tommy-schneiders.svg",
+      "image": "/assets/images/placeholders/tommy-schneiders.webp",
       "imageAlt": "Portrait of Tommy Schneiders",
       "primaryUrl": "https://www.imdb.com/name/nm6256206/",
       "primaryLabel": "IMDb",
@@ -148,7 +166,7 @@
       "bio": null,
       "status": null,
       "featured": false,
-      "order": 80
+      "order": 90
     },
     {
       "id": "nathaniel-seybold",
@@ -166,7 +184,7 @@
       "bio": null,
       "status": null,
       "featured": false,
-      "order": 90
+      "order": 100
     },
     {
       "id": "nathaniel-shriver",
@@ -175,7 +193,7 @@
         "AD",
         "Screenwriter"
       ],
-      "image": "/assets/images/placeholders/nathaniel-shriver.svg",
+      "image": "/assets/images/placeholders/nathaniel-shriver.webp",
       "imageAlt": "Portrait of Nathaniel Shriver",
       "primaryUrl": "https://www.imdb.com/name/nm3389374/",
       "primaryLabel": "IMDb",
@@ -185,7 +203,7 @@
       "bio": null,
       "status": null,
       "featured": false,
-      "order": 100
+      "order": 110
     },
     {
       "id": "kris-shuman",
@@ -195,7 +213,7 @@
         "Producer",
         "Screenwriter"
       ],
-      "image": "/assets/images/placeholders/kris-shuman.svg",
+      "image": "/assets/images/placeholders/kris-shuman.webp",
       "imageAlt": "Portrait of Kris Shuman",
       "primaryUrl": null,
       "primaryLabel": null,
@@ -205,7 +223,7 @@
       "bio": null,
       "status": null,
       "featured": false,
-      "order": 110
+      "order": 120
     }
   ]
 }
