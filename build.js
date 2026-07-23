@@ -156,9 +156,12 @@ function header(activeKey) {
   return `      <a class="skip-link" href="#main">Skip to content</a>
       <header class="site-header" data-header>
         <div class="container container--wide site-header__inner">
-          <a class="brand" href="/" aria-label="Middle Rock Management — home">
-            <img class="brand__logo" src="${SITE.logo}" alt="Middle Rock Management" width="1141" height="1014">
-          </a>
+          <div class="masthead-brand">
+            <a class="brand" href="/" aria-label="Middle Rock Management — home">
+              <img class="brand__logo" src="${SITE.logo}" alt="Middle Rock Management" width="1141" height="1014">
+            </a>
+            <span class="brand__descriptor">Boutique entertainment management</span>
+          </div>
           <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav" aria-label="Open menu" data-nav-toggle>
             <svg class="icon-open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
             <svg class="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
