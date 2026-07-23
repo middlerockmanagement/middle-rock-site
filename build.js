@@ -134,7 +134,7 @@ function filterButtons(clients) {
   const set = new Map();
   for (const c of clients) for (const d of (c.disciplines || [])) set.set(slugify(d), d);
   const items = [...set.entries()].sort((a, b) => a[1].localeCompare(b[1]));
-  const out = [`          <option value="all">All disciplines</option>`];
+  const out = [`          <option value="all">All professions</option>`];
   for (const [token, label] of items) {
     out.push(`          <option value="${attr(token)}">${esc(label)}</option>`);
   }

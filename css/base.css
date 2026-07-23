@@ -64,6 +64,7 @@
 /* ------------------------- Reset ------------------------------- */
 *, *::before, *::after { box-sizing: border-box; }
 * { margin: 0; }
+[hidden] { display: none !important; }   /* make the hidden attribute reliable (cards/filter use it) */
 html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
