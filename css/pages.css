@@ -149,40 +149,67 @@
 .section-head__title { font-size: var(--step-4); }
 .section-head__aside { display: flex; align-items: center; gap: var(--space-s); }
 
-/* --------------------------- Values ---------------------------- */
-.values { display: grid; gap: 0; }
-.value {
+/* ------------------- Lexicon (home "What we value") -------------
+   Dictionary-style accordion: each value is an entry with part of
+   speech, pronunciation, syllable breaks, and an "at Middle Rock"
+   gloss. Built on native <details> — keyboard-accessible, works
+   without JS, and opens one entry at a time (details name=). */
+.lexicon { border-top: 1px solid var(--rule); }
+.lex { border-bottom: 1px solid var(--rule); }
+.lex__summary {
+  list-style: none;
+  cursor: pointer;
   display: grid;
-  gap: var(--space-xs);
-  padding-block: var(--space-l);
-  border-top: 1px solid var(--rule);
-  grid-template-columns: auto 1fr;
-  column-gap: var(--space-l);
-  align-items: baseline;
+  grid-template-columns: 1fr auto;
+  column-gap: var(--space-m);
+  row-gap: 0.4rem;
+  align-items: center;
+  padding-block: clamp(1.15rem, 0.9rem + 1vw, 1.9rem);
 }
-.value:last-child { border-bottom: 1px solid var(--rule); }
-.value__word {
+.lex__summary::-webkit-details-marker { display: none; }
+.lex__summary:focus-visible { outline: var(--focus); outline-offset: 4px; }
+.lex__headword { grid-column: 1; grid-row: 1; display: flex; align-items: baseline; gap: 0.6rem; flex-wrap: wrap; }
+.lex__word {
   font-family: var(--font-display);
   font-size: var(--step-3);
   color: var(--ink);
   letter-spacing: -0.01em;
+  transition: color var(--dur-fast) var(--ease);
 }
-.value__num {
-  font-family: var(--font-display);
-  font-size: var(--step-1);
-  color: var(--ink-faint);
-  font-variant-numeric: tabular-nums;
+.lex__pos { font-family: var(--font-display); font-style: italic; font-size: var(--step-0); color: var(--ink-muted); }
+.lex__phon {
+  grid-column: 1; grid-row: 2;
+  font-size: var(--step--1);
+  letter-spacing: 0.02em;
+  color: var(--ink-muted);
 }
-.value__body {
-  font-size: var(--step-1);
-  line-height: 1.4;
-  color: var(--ink-soft);
-  max-width: 46ch;
-  grid-column: 2;
+.lex__summary:hover .lex__word { color: var(--ink-soft); }
+
+/* + / − toggle indicator */
+.lex__toggle { grid-column: 2; grid-row: 1 / span 2; position: relative; width: 22px; height: 22px; color: var(--ink-muted); }
+.lex__toggle::before, .lex__toggle::after { content: ""; position: absolute; background: currentColor; }
+.lex__toggle::before { top: 50%; left: 0; right: 0; height: 1.5px; transform: translateY(-50%); }
+.lex__toggle::after { left: 50%; top: 0; bottom: 0; width: 1.5px; transform: translateX(-50%); transition: opacity var(--dur-fast) var(--ease); }
+.lex[open] .lex__toggle::after { opacity: 0; }
+.lex[open] .lex__toggle { color: var(--ink); }
+
+.lex__panel { padding: 0 0 var(--space-l); max-width: 58ch; }
+.lex__def { font-size: var(--step-1); line-height: 1.5; color: var(--ink-soft); }
+.lex__mrm { margin-top: var(--space-s); font-size: var(--step-0); line-height: 1.5; color: var(--ink); }
+.lex__mrm-label {
+  display: inline-block;
+  font-family: var(--font-sans);
+  font-size: var(--step--1);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+  margin-right: 0.6em;
 }
-@media (max-width: 640px) {
-  .value { grid-template-columns: 1fr; }
-  .value__body { grid-column: 1; }
+.lex[open] .lex__panel { animation: lex-in 0.4s var(--ease); }
+@keyframes lex-in { from { opacity: 0; transform: translateY(-4px); } to { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: reduce) {
+  .lex__word, .lex__toggle::after { transition: none; }
+  .lex[open] .lex__panel { animation: none; }
 }
 
 /* ----------------------- Team preview -------------------------- */
