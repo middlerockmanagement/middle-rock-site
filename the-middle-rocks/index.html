@@ -72,37 +72,73 @@
       <h2 class="visually-hidden" id="roster-heading">Full roster</h2>
 
       <!-- Discipline filter — progressive enhancement. Without JS, all clients show. -->
-      <div class="filter" role="group" aria-label="Filter roster by discipline" data-filter-group hidden>
+      <div class="roster-filter" data-filter-group hidden>
+        <label class="roster-filter__label" for="discipline-filter">Filter by discipline</label>
+        <select class="roster-filter__select" id="discipline-filter" data-filter-select>
         <!-- FILTER:START -->
-        <button class="filter__btn" type="button" data-filter="all" aria-pressed="true">All</button>
-        <button class="filter__btn" type="button" data-filter="actress" aria-pressed="false">Actress</button>
-        <button class="filter__btn" type="button" data-filter="ad" aria-pressed="false">AD</button>
-        <button class="filter__btn" type="button" data-filter="animation-writer" aria-pressed="false">Animation Writer</button>
-        <button class="filter__btn" type="button" data-filter="animation-writing-team" aria-pressed="false">Animation Writing Team</button>
-        <button class="filter__btn" type="button" data-filter="author" aria-pressed="false">Author</button>
-        <button class="filter__btn" type="button" data-filter="filmmaker" aria-pressed="false">Filmmaker</button>
-        <button class="filter__btn" type="button" data-filter="mg-fantasy-author" aria-pressed="false">MG Fantasy Author</button>
-        <button class="filter__btn" type="button" data-filter="producer" aria-pressed="false">Producer</button>
-        <button class="filter__btn" type="button" data-filter="screenwriter" aria-pressed="false">Screenwriter</button>
-        <button class="filter__btn" type="button" data-filter="voice-actor" aria-pressed="false">Voice Actor</button>
+          <option value="all">All disciplines</option>
+          <option value="actress">Actress</option>
+          <option value="ad">AD</option>
+          <option value="animation-writer">Animation Writer</option>
+          <option value="animation-writing-team">Animation Writing Team</option>
+          <option value="author">Author</option>
+          <option value="filmmaker">Filmmaker</option>
+          <option value="mg-fantasy-author">MG Fantasy Author</option>
+          <option value="producer">Producer</option>
+          <option value="screenwriter">Screenwriter</option>
+          <option value="voice-actor">Voice Actor</option>
         <!-- FILTER:END -->
+        </select>
       </div>
 
       <p class="visually-hidden" role="status" data-filter-status></p>
 
       <div class="roster-grid" data-roster-grid>
         <!-- ROSTER:START -->
-        <article class="card" data-disciplines="screenwriter producer">
+        <article class="card" data-disciplines="screenwriter mg-fantasy-author">
           <div class="card__media">
             <div class="img-window ratio-4-5 img-mono">
-              <img src="/assets/images/placeholders/carlo-nicdao.svg" alt="Portrait of Carlo Nicdao" width="640" height="800" loading="lazy" decoding="async">
+              <img src="/assets/images/placeholders/philip-asta.svg" alt="Portrait of Philip Asta" width="640" height="800" loading="lazy" decoding="async">
             </div>
           </div>
-          <h3 class="card__name">Carlo Nicdao</h3>
-          <p class="card__disciplines">Screenwriter <span class="sep" aria-hidden="true">/</span> Producer</p>
+          <h3 class="card__name">Philip Asta</h3>
+          <p class="card__disciplines">Screenwriter <span class="sep" aria-hidden="true">/</span> MG Fantasy Author</p>
+        </article>
+        <article class="card" data-disciplines="screenwriter">
+          <div class="card__media">
+            <div class="img-window ratio-4-5 img-mono">
+              <img src="/assets/images/placeholders/lauren-astore.svg" alt="Portrait of Lauren Astore" width="640" height="800" loading="lazy" decoding="async">
+            </div>
+          </div>
+          <h3 class="card__name">Lauren Astore</h3>
+          <p class="card__disciplines">Screenwriter</p>
           <p class="card__note">Co-Manager: Michael Swidler, 5x Media</p>
           <div class="card__links">
-            <a class="card__link" href="https://www.imdb.com/name/nm17514410/" target="_blank" rel="noopener noreferrer">IMDb <span class="arrow" aria-hidden="true">&#8599;</span><span class="visually-hidden"> (opens in a new tab)</span></a>
+            <a class="card__link" href="https://www.imdb.com/name/nm4058966/" target="_blank" rel="noopener noreferrer">IMDb <span class="arrow" aria-hidden="true">&#8599;</span><span class="visually-hidden"> (opens in a new tab)</span></a>
+          </div>
+        </article>
+        <article class="card" data-disciplines="animation-writing-team">
+          <div class="card__media">
+            <div class="img-window ratio-4-5 img-mono">
+              <img src="/assets/images/placeholders/pam-and-lindsay.svg" alt="Portrait of Pam Bassuk and Lindsay Jean Michelle" width="640" height="800" loading="lazy" decoding="async">
+            </div>
+          </div>
+          <h3 class="card__name">Pam Bassuk &amp; Lindsay Jean Michelle</h3>
+          <p class="card__disciplines">Animation Writing Team</p>
+          <div class="card__links">
+            <a class="card__link" href="https://www.pamandlindsay.com/" target="_blank" rel="noopener noreferrer">Website <span class="arrow" aria-hidden="true">&#8599;</span><span class="visually-hidden"> (opens in a new tab)</span></a>
+          </div>
+        </article>
+        <article class="card" data-disciplines="screenwriter filmmaker author actress">
+          <div class="card__media">
+            <div class="img-window ratio-4-5 img-mono">
+              <img src="/assets/images/placeholders/tiff-campbell.svg" alt="Portrait of Tiff Campbell" width="640" height="800" loading="lazy" decoding="async">
+            </div>
+          </div>
+          <h3 class="card__name">Tiff Campbell</h3>
+          <p class="card__disciplines">Screenwriter <span class="sep" aria-hidden="true">/</span> Filmmaker <span class="sep" aria-hidden="true">/</span> Author <span class="sep" aria-hidden="true">/</span> Actress</p>
+          <div class="card__links">
+            <a class="card__link" href="https://www.imdb.com/name/nm10945018/" target="_blank" rel="noopener noreferrer">IMDb <span class="arrow" aria-hidden="true">&#8599;</span><span class="visually-hidden"> (opens in a new tab)</span></a>
           </div>
         </article>
         <article class="card" data-disciplines="author">
@@ -129,62 +165,17 @@
             <a class="card__link" href="https://www.imdb.com/name/nm5325327/" target="_blank" rel="noopener noreferrer">IMDb <span class="arrow" aria-hidden="true">&#8599;</span><span class="visually-hidden"> (opens in a new tab)</span></a>
           </div>
         </article>
-        <article class="card" data-disciplines="screenwriter">
+        <article class="card" data-disciplines="screenwriter producer">
           <div class="card__media">
             <div class="img-window ratio-4-5 img-mono">
-              <img src="/assets/images/placeholders/lauren-astore.svg" alt="Portrait of Lauren Astore" width="640" height="800" loading="lazy" decoding="async">
+              <img src="/assets/images/placeholders/carlo-nicdao.svg" alt="Portrait of Carlo Nicdao" width="640" height="800" loading="lazy" decoding="async">
             </div>
           </div>
-          <h3 class="card__name">Lauren Astore</h3>
-          <p class="card__disciplines">Screenwriter</p>
+          <h3 class="card__name">Carlo Nicdao</h3>
+          <p class="card__disciplines">Screenwriter <span class="sep" aria-hidden="true">/</span> Producer</p>
           <p class="card__note">Co-Manager: Michael Swidler, 5x Media</p>
           <div class="card__links">
-            <a class="card__link" href="https://www.imdb.com/name/nm4058966/" target="_blank" rel="noopener noreferrer">IMDb <span class="arrow" aria-hidden="true">&#8599;</span><span class="visually-hidden"> (opens in a new tab)</span></a>
-          </div>
-        </article>
-        <article class="card" data-disciplines="voice-actor">
-          <div class="card__media">
-            <div class="img-window ratio-4-5 img-mono">
-              <img src="/assets/images/placeholders/nathaniel-seybold.svg" alt="Portrait of Nathaniel Seybold" width="640" height="800" loading="lazy" decoding="async">
-            </div>
-          </div>
-          <h3 class="card__name">Nathaniel Seybold</h3>
-          <p class="card__disciplines">Voice Actor</p>
-        </article>
-        <article class="card" data-disciplines="animation-writing-team">
-          <div class="card__media">
-            <div class="img-window ratio-4-5 img-mono">
-              <img src="/assets/images/placeholders/pam-and-lindsay.svg" alt="Portrait of Pam Bassuk and Lindsay Jean Michelle" width="640" height="800" loading="lazy" decoding="async">
-            </div>
-          </div>
-          <h3 class="card__name">Pam Bassuk &amp; Lindsay Jean Michelle</h3>
-          <p class="card__disciplines">Animation Writing Team</p>
-          <div class="card__links">
-            <a class="card__link" href="https://www.pamandlindsay.com/" target="_blank" rel="noopener noreferrer">Website <span class="arrow" aria-hidden="true">&#8599;</span><span class="visually-hidden"> (opens in a new tab)</span></a>
-          </div>
-        </article>
-        <article class="card" data-disciplines="screenwriter ad">
-          <div class="card__media">
-            <div class="img-window ratio-4-5 img-mono">
-              <img src="/assets/images/placeholders/nathaniel-shriver.svg" alt="Portrait of Nathaniel Shriver" width="640" height="800" loading="lazy" decoding="async">
-            </div>
-          </div>
-          <h3 class="card__name">Nathaniel Shriver</h3>
-          <p class="card__disciplines">Screenwriter <span class="sep" aria-hidden="true">/</span> AD</p>
-          <div class="card__links">
-            <a class="card__link" href="https://www.imdb.com/name/nm3389374/" target="_blank" rel="noopener noreferrer">IMDb <span class="arrow" aria-hidden="true">&#8599;</span><span class="visually-hidden"> (opens in a new tab)</span></a>
-          </div>
-        </article>
-        <article class="card" data-disciplines="screenwriter filmmaker author actress">
-          <div class="card__media">
-            <div class="img-window ratio-4-5 img-mono">
-              <img src="/assets/images/placeholders/tiff-campbell.svg" alt="Portrait of Tiff Campbell" width="640" height="800" loading="lazy" decoding="async">
-            </div>
-          </div>
-          <h3 class="card__name">Tiff Campbell</h3>
-          <p class="card__disciplines">Screenwriter <span class="sep" aria-hidden="true">/</span> Filmmaker <span class="sep" aria-hidden="true">/</span> Author <span class="sep" aria-hidden="true">/</span> Actress</p>
-          <div class="card__links">
-            <a class="card__link" href="https://www.imdb.com/name/nm10945018/" target="_blank" rel="noopener noreferrer">IMDb <span class="arrow" aria-hidden="true">&#8599;</span><span class="visually-hidden"> (opens in a new tab)</span></a>
+            <a class="card__link" href="https://www.imdb.com/name/nm17514410/" target="_blank" rel="noopener noreferrer">IMDb <span class="arrow" aria-hidden="true">&#8599;</span><span class="visually-hidden"> (opens in a new tab)</span></a>
           </div>
         </article>
         <article class="card" data-disciplines="animation-writer">
@@ -199,14 +190,35 @@
             <a class="card__link" href="https://www.imdb.com/name/nm6256206/" target="_blank" rel="noopener noreferrer">IMDb <span class="arrow" aria-hidden="true">&#8599;</span><span class="visually-hidden"> (opens in a new tab)</span></a>
           </div>
         </article>
-        <article class="card" data-disciplines="screenwriter mg-fantasy-author">
+        <article class="card" data-disciplines="voice-actor">
           <div class="card__media">
             <div class="img-window ratio-4-5 img-mono">
-              <img src="/assets/images/placeholders/philip-asta.svg" alt="Portrait of Philip Asta" width="640" height="800" loading="lazy" decoding="async">
+              <img src="/assets/images/placeholders/nathaniel-seybold.svg" alt="Portrait of Nathaniel Seybold" width="640" height="800" loading="lazy" decoding="async">
             </div>
           </div>
-          <h3 class="card__name">Philip Asta</h3>
-          <p class="card__disciplines">Screenwriter <span class="sep" aria-hidden="true">/</span> MG Fantasy Author</p>
+          <h3 class="card__name">Nathaniel Seybold</h3>
+          <p class="card__disciplines">Voice Actor</p>
+        </article>
+        <article class="card" data-disciplines="screenwriter ad">
+          <div class="card__media">
+            <div class="img-window ratio-4-5 img-mono">
+              <img src="/assets/images/placeholders/nathaniel-shriver.svg" alt="Portrait of Nathaniel Shriver" width="640" height="800" loading="lazy" decoding="async">
+            </div>
+          </div>
+          <h3 class="card__name">Nathaniel Shriver</h3>
+          <p class="card__disciplines">Screenwriter <span class="sep" aria-hidden="true">/</span> AD</p>
+          <div class="card__links">
+            <a class="card__link" href="https://www.imdb.com/name/nm3389374/" target="_blank" rel="noopener noreferrer">IMDb <span class="arrow" aria-hidden="true">&#8599;</span><span class="visually-hidden"> (opens in a new tab)</span></a>
+          </div>
+        </article>
+        <article class="card" data-disciplines="">
+          <div class="card__media">
+            <div class="img-window ratio-4-5 img-mono">
+              <img src="/assets/images/placeholders/kris-shuman.svg" alt="Portrait of Kris Shuman" width="640" height="800" loading="lazy" decoding="async">
+            </div>
+          </div>
+          <h3 class="card__name">Kris Shuman</h3>
+          <p class="card__disciplines"></p>
         </article>
         <!-- ROSTER:END -->
       </div>

@@ -81,12 +81,12 @@
     }
   }
 
-  /* ---------------- Discipline filter ------------------ */
+  /* ---------------- Discipline filter (dropdown) ------------------ */
   var group = document.querySelector("[data-filter-group]");
   var grid = document.querySelector("[data-roster-grid]");
   if (group && grid) {
     group.hidden = false; // reveal now that JS can drive it
-    var buttons = group.querySelectorAll("[data-filter]");
+    var select = group.querySelector("[data-filter-select]");
     var cards = Array.prototype.slice.call(grid.querySelectorAll(".card"));
     var status = document.querySelector("[data-filter-status]");
 
@@ -98,9 +98,6 @@
         card.hidden = !match;
         if (match) shown++;
       });
-      buttons.forEach(function (b) {
-        b.setAttribute("aria-pressed", String(b.getAttribute("data-filter") === filter));
-      });
       if (status) {
         status.textContent = filter === "all"
           ? "Showing all " + shown + " clients."
@@ -108,10 +105,7 @@
       }
     };
 
-    group.addEventListener("click", function (e) {
-      var btn = e.target.closest("[data-filter]");
-      if (btn) apply(btn.getAttribute("data-filter"));
-    });
+    if (select) select.addEventListener("change", function () { apply(select.value); });
   }
 
   /* ---------- Values lexicon: accordion on mobile, full on desktop ---------- */

@@ -130,12 +130,13 @@ function miniMember(m) {
 
 /* ----------------------- filter buttons ------------------------ */
 function filterButtons(clients) {
+  // Discipline <option>s for the roster filter dropdown.
   const set = new Map();
   for (const c of clients) for (const d of (c.disciplines || [])) set.set(slugify(d), d);
   const items = [...set.entries()].sort((a, b) => a[1].localeCompare(b[1]));
-  const out = [`        <button class="filter__btn" type="button" data-filter="all" aria-pressed="true">All</button>`];
+  const out = [`          <option value="all">All disciplines</option>`];
   for (const [token, label] of items) {
-    out.push(`        <button class="filter__btn" type="button" data-filter="${attr(token)}" aria-pressed="false">${esc(label)}</button>`);
+    out.push(`          <option value="${attr(token)}">${esc(label)}</option>`);
   }
   return out.join("\n");
 }
