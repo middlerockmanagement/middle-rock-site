@@ -15,6 +15,21 @@
 const fs = require("fs");
 const path = require("path");
 
+/* =============================================================
+   SITE OPTIONS — flip a value, then run:  node build.js
+   ------------------------------------------------------------
+   showHomeRoster:
+     false = the homepage does NOT show a "Selected roster"
+             preview (recommended — avoids implying some clients
+             matter more). The full roster page is unaffected.
+     true  = show a preview of up to 6 featured clients on the
+             homepage. Choose which appear by setting
+             "featured": true on those clients in data/clients.json.
+   ============================================================= */
+const OPTIONS = {
+  showHomeRoster: false,
+};
+
 const ROOT = __dirname;
 const read = (p) => fs.readFileSync(path.join(ROOT, p), "utf8");
 const readJSON = (p) => JSON.parse(read(p));
@@ -125,6 +140,21 @@ function filterButtons(clients) {
     out.push(`        <button class="filter__btn" type="button" data-filter="${attr(token)}" aria-pressed="false">${esc(label)}</button>`);
   }
   return out.join("\n");
+}
+
+/* ------------- home "Selected roster" section (optional) ------- */
+function homeRosterSection(featured) {
+  if (!OPTIONS.showHomeRoster) return ""; // toggled off — render nothing
+  const cards = featured.map((c) => rosterCard(c, "h3")).join("\n");
+  return `    <section class="section container container--wide" aria-labelledby="roster-title">
+      <div class="section-head">
+        <h2 class="section-head__title" id="roster-title">Selected roster</h2>
+        <a class="link-underline" href="/the-middle-rocks/">View the full roster &rarr;</a>
+      </div>
+      <div class="roster-grid" data-reveal>
+${cards}
+      </div>
+    </section>`;
 }
 
 /* --------------------- site chrome (nav/footer) ---------------- */
@@ -257,7 +287,7 @@ function main() {
   jobs.push(
     ["the-middle-rocks/index.html", "ROSTER", clients.map((c) => rosterCard(c, "h3")).join("\n")],
     ["the-middle-rocks/index.html", "FILTER", filterButtons(clients)],
-    ["index.html", "ROSTER_PREVIEW", featured.map((c) => rosterCard(c, "h3")).join("\n")],
+    ["index.html", "HOME_ROSTER", homeRosterSection(featured)],
     ["index.html", "TEAM_PREVIEW", team.map((m) => miniMember(m)).join("\n")],
     ["about/index.html", "TEAM", team.map((m) => teamMember(m, "h2")).join("\n")]
   );

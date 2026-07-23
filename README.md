@@ -113,6 +113,22 @@ To **remove** a client, delete their object. To **reorder**, change the `order` 
 
 ---
 
+## 3b. Homepage options (show/hide the "Selected roster")
+
+The homepage can optionally show a small preview of a few clients ("Selected roster").
+It's **off by default** — a boutique roster generally shouldn't imply some clients matter
+more than others. To turn it on or off, open **`build.js`** and edit the flag near the top:
+
+```js
+const OPTIONS = {
+  showHomeRoster: false,   // false = hidden (default);  true = show the preview
+};
+```
+
+Save, run `node build.js`, refresh. When it's on, it shows up to 6 clients that have
+`"featured": true` in `data/clients.json`. The full roster page (The Middle Rocks) is never
+affected by this switch.
+
 ## 4. Update the team
 
 Same idea, in **`data/team.json`**. Then run `node build.js`. Bios are shown verbatim, so
