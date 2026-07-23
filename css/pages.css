@@ -7,7 +7,7 @@
 /* ------------------------- Hero (home) -------------------------
    The logo is the brand moment. Tagline + lede sit beneath it,
    centred and vertically balanced within the first screen. */
-.hero { border-bottom: 1px solid var(--rule); }
+.hero { position: relative; border-bottom: 1px solid var(--rule); }
 .hero__grid {
   min-height: calc(100svh - var(--header-h));
   display: grid;
@@ -41,15 +41,29 @@
   margin-top: var(--space-xs);
 }
 
+/* Subtle scroll cue anchored to the bottom of the first screen. */
+.hero__scroll {
+  position: absolute;
+  left: 50%;
+  bottom: clamp(1rem, 3vh, 2rem);
+  transform: translateX(-50%);
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 44px; height: 44px;
+  color: var(--ink-faint);
+  transition: color var(--dur-fast) var(--ease);
+}
+.hero__scroll:hover, .hero__scroll:focus-visible { color: var(--ink); }
+.hero__scroll svg { width: 24px; height: 24px; animation: hero-bob 2.6s var(--ease) infinite; }
+@keyframes hero-bob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(5px); } }
+@media (prefers-reduced-motion: reduce) { .hero__scroll svg { animation: none; } }
+
 /* Mobile-first hero: sized for the phone, not a shrunk desktop. */
 @media (max-width: 640px) {
   .hero__grid { gap: var(--space-l); padding-block: clamp(2rem, 5vh, 3.5rem); }
   .hero__logo { height: clamp(120px, 42vw, 210px); }
   .hero__tagline { font-size: clamp(2.4rem, 12vw, 3.4rem); line-height: 1.02; }
   .hero__lede { font-size: var(--step-1); max-width: 34ch; }
-  .hero__meta { flex-direction: column; align-items: stretch; gap: var(--space-s); width: 100%; }
-  .hero__meta .btn { width: 100%; justify-content: center; }
-  .hero__meta .link-underline { text-align: center; padding-block: 0.35rem; }
+  .hero__scroll { display: none; }   /* content fills the screen on phones — no room needed */
 }
 
 /* --------------------------- Intro -----------------------------
