@@ -13,6 +13,15 @@
     el.textContent = new Date().getFullYear();
   });
 
+  /* --------- Click-to-email: build mailto: from split parts so the raw
+     address is never present in the page HTML (spam-harvester resistant) --------- */
+  document.querySelectorAll("[data-e-user][data-e-domain]").forEach(function (el) {
+    var addr = el.getAttribute("data-e-user") + "@" + el.getAttribute("data-e-domain");
+    el.setAttribute("href", "mailto:" + addr);
+    el.removeAttribute("data-e-user");
+    el.removeAttribute("data-e-domain");
+  });
+
   /* ---------------- Sticky header shadow --------------- */
   var header = document.querySelector("[data-header]");
   if (header) {

@@ -217,7 +217,7 @@
 
 .footer-grid {
   display: grid;
-  gap: var(--space-l) var(--space-2xl);
+  gap: var(--space-l) clamp(2rem, 8vw, 6rem);
   grid-template-columns: 1fr 1fr;
   align-items: start;
 }
@@ -261,7 +261,7 @@
 @media (max-width: 640px) {
   .footer__email { font-size: var(--step-2); }   /* not oversized on phones */
 }
-@media (max-width: 460px) { .footer-grid { grid-template-columns: 1fr; } }
+@media (max-width: 560px) { .footer-grid { grid-template-columns: 1fr; } }
 
 /* Back-to-top button — site style (paper circle, ink chevron) */
 .to-top {

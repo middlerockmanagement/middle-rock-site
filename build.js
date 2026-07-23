@@ -159,7 +159,10 @@ ${cards}
 
 /* --------------------- site chrome (nav/footer) ---------------- */
 const SITE = {
-  email: "info@middlerockmanagement.com",
+  // Email is split so the raw address never appears in the HTML (spam harvesters
+  // scrape mailto:/text). js/main.js reassembles it into a mailto: on click.
+  emailUser: "info",
+  emailDomain: "middlerockmanagement.com",
   linkedin: "https://www.linkedin.com/company/middle-rock-management",
   instagram: "https://www.instagram.com/middlerockmgmt/",
   logo: "/assets/brand/middle-rock-management-logo.webp",
@@ -215,7 +218,7 @@ function footer() {
         <div class="footer__cta">
           <div class="footer__cta-text">
             <p class="eyebrow footer__cta-eyebrow">Get in touch</p>
-            <a class="footer__email" href="mailto:${SITE.email}">${SITE.email}</a>
+            <a class="footer__email" data-e-user="${SITE.emailUser}" data-e-domain="${SITE.emailDomain}" href="/contact/">Email us <span class="footer__email-arrow" aria-hidden="true">&rarr;</span></a>
             <p class="footer__policy"><strong>We are not currently accepting unsolicited submissions.</strong> Any unsolicited material sent via email or form will be deleted.</p>
           </div>
           <a class="footer__logo-link" href="/" aria-label="Middle Rock Management — home">
@@ -235,9 +238,6 @@ function footer() {
           </nav>
           <div class="footer__col">
             <h2>Connect</h2>
-            <ul>
-              <li><a href="mailto:${SITE.email}">${SITE.email}</a></li>
-            </ul>
             <div class="footer__socials">
               <a href="${SITE.linkedin}" target="_blank" rel="noopener noreferrer" aria-label="Middle Rock Management on LinkedIn">${ICON_LINKEDIN}</a>
               <a href="${SITE.instagram}" target="_blank" rel="noopener noreferrer" aria-label="Middle Rock Management on Instagram">${ICON_INSTAGRAM}</a>
