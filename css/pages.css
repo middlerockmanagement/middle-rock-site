@@ -70,29 +70,42 @@
    Distinct from the hero: a labelled, larger editorial lead so the
    second screen doesn't echo the first. */
 .intro__label { margin-bottom: var(--space-m); }
-.intro__grid { display: grid; gap: var(--space-l); }
+/* Pull the philosophy up close under the page header … */
+.section--tight:has(.intro__grid) { padding-top: var(--space-s); }
+
+/* … then frame it as one deliberate spread: a hairline rule ties the
+   statement and its elaboration together instead of leaving them to float. */
+.intro__grid {
+  display: grid;
+  gap: var(--space-m);
+  padding-top: var(--space-l);
+  border-top: 1px solid var(--rule);
+}
 .intro__statement {
   font-family: var(--font-display);
   font-size: var(--step-4);
   line-height: 1.14;
   letter-spacing: -0.01em;
   color: var(--ink);
-  max-width: 20ch;
+  max-width: 22ch;
+  margin: 0;
 }
 .intro__body {
-  max-width: var(--measure);
+  max-width: 48ch;
   color: var(--ink-soft);
   font-size: var(--step-1);
-  line-height: 1.5;
+  line-height: 1.55;
+  margin: 0;
 }
 .intro__body p + p { margin-top: var(--space-m); }
 @media (min-width: 860px) {
   .intro__grid {
-    grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
-    gap: var(--space-2xl);
-    align-items: start;
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+    gap: clamp(2.5rem, 1rem + 5vw, 6rem);
+    align-items: start;               /* top-align both columns */
+    padding-top: var(--space-xl);
   }
-  .intro__body { align-self: end; }
+  .intro__body { padding-top: 0.4rem; } /* optical: sit body on the statement's cap-line */
 }
 
 /* ------------------- Statement panel (home "What we do") --------
