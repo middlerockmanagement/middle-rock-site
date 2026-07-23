@@ -50,7 +50,7 @@
   --container: 76rem;      /* ~1216px */
   --container-wide: 88rem;
   --gutter: clamp(1.25rem, 0.8rem + 2.2vw, 3.25rem);
-  --header-h: clamp(66px, 5.5vw, 86px);   /* compact masthead: small logo + descriptor */
+  --header-h: clamp(74px, 6vw, 96px);   /* masthead: logo + descriptor */
 
   /* --- Motion ---------------------------------------------------- */
   --ease: cubic-bezier(0.22, 0.61, 0.36, 1);

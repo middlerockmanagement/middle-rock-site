@@ -54,19 +54,17 @@
   min-height: var(--header-h);
   padding-block: 0.65rem;
 }
-/* Masthead brand: small logo + descriptor */
+/* Masthead brand: logo + descriptor — the whole area links home */
 .masthead-brand {
   display: flex;
   align-items: center;
   gap: var(--space-s);
   min-width: 0;
-}
-.brand {
-  display: inline-flex;
-  align-items: center;
   flex-shrink: 0;
+  color: inherit;
+  text-decoration: none;
 }
-.brand__logo { height: clamp(42px, 4vw, 54px); width: auto; }
+.brand__logo { height: clamp(56px, 5.4vw, 72px); width: auto; }
 .brand__descriptor {
   padding-left: var(--space-s);
   border-left: 1px solid var(--rule-strong);
