@@ -162,13 +162,12 @@
   display: grid;
   grid-template-columns: 1fr auto;
   column-gap: var(--space-m);
-  row-gap: 0.4rem;
   align-items: center;
   padding-block: clamp(1.15rem, 0.9rem + 1vw, 1.9rem);
 }
 .lex__summary::-webkit-details-marker { display: none; }
 .lex__summary:focus-visible { outline: var(--focus); outline-offset: 4px; }
-.lex__headword { grid-column: 1; grid-row: 1; display: flex; align-items: baseline; gap: 0.6rem; flex-wrap: wrap; }
+.lex__headword { grid-column: 1; display: flex; align-items: baseline; gap: 0.7rem; flex-wrap: wrap; }
 .lex__word {
   font-family: var(--font-display);
   font-size: var(--step-3);
@@ -176,17 +175,14 @@
   letter-spacing: -0.01em;
   transition: color var(--dur-fast) var(--ease);
 }
+/* dictionary syllable dots + light primary-stress mark, kept legible */
+.lex__sep { color: var(--ink-faint); padding-inline: 0.06em; font-size: 0.7em; vertical-align: 0.12em; }
+.lex__stress { color: var(--ink-muted); }
 .lex__pos { font-family: var(--font-display); font-style: italic; font-size: var(--step-0); color: var(--ink-muted); }
-.lex__phon {
-  grid-column: 1; grid-row: 2;
-  font-size: var(--step--1);
-  letter-spacing: 0.02em;
-  color: var(--ink-muted);
-}
 .lex__summary:hover .lex__word { color: var(--ink-soft); }
 
 /* + / − toggle indicator */
-.lex__toggle { grid-column: 2; grid-row: 1 / span 2; position: relative; width: 22px; height: 22px; color: var(--ink-muted); }
+.lex__toggle { grid-column: 2; position: relative; width: 22px; height: 22px; color: var(--ink-muted); }
 .lex__toggle::before, .lex__toggle::after { content: ""; position: absolute; background: currentColor; }
 .lex__toggle::before { top: 50%; left: 0; right: 0; height: 1.5px; transform: translateY(-50%); }
 .lex__toggle::after { left: 50%; top: 0; bottom: 0; width: 1.5px; transform: translateX(-50%); transition: opacity var(--dur-fast) var(--ease); }
@@ -194,7 +190,7 @@
 .lex[open] .lex__toggle { color: var(--ink); }
 
 .lex__panel { padding: 0 0 var(--space-l); max-width: 58ch; }
-.lex__def { font-size: var(--step-1); line-height: 1.5; color: var(--ink-soft); }
+.lex__def { font-family: var(--font-display); font-style: italic; font-size: var(--step-0); line-height: 1.5; color: var(--ink-soft); }
 .lex__mrm { margin-top: var(--space-s); font-size: var(--step-0); line-height: 1.5; color: var(--ink); }
 .lex__mrm-label {
   display: inline-block;
