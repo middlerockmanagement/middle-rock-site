@@ -156,14 +156,24 @@
 .section-head__aside { display: flex; align-items: center; gap: var(--space-s); }
 
 /* ------------------- Lexicon (home "What we value") -------------
-   Dictionary-style accordion: each value is an entry with part of
-   speech, pronunciation, syllable breaks, and an "at Middle Rock"
-   gloss. Built on native <details> — keyboard-accessible, works
-   without JS, and opens one entry at a time (details name=). */
+   MOBILE: tap-to-expand accordion — one entry open at a time.
+   DESKTOP: a full glossary, nothing to click — the word + its
+   definition on the left, a vertical hairline, "At Middle Rock"
+   on the right. Enhanced by main.js; without JS every entry shows. */
 .lexicon { border-top: 1px solid var(--rule); }
 .lex { border-bottom: 1px solid var(--rule); }
+
+/* Headword row: a reset button (no box) so it can toggle on mobile. */
 .lex__summary {
-  list-style: none;
+  appearance: none;
+  -webkit-appearance: none;
+  width: 100%;
+  margin: 0;
+  background: transparent;
+  border: 0;
+  color: inherit;
+  font: inherit;
+  text-align: left;
   cursor: pointer;
   display: grid;
   grid-template-columns: 1fr auto;
@@ -171,7 +181,6 @@
   align-items: center;
   padding-block: clamp(1.15rem, 0.9rem + 1vw, 1.9rem);
 }
-.lex__summary::-webkit-details-marker { display: none; }
 .lex__summary:focus-visible { outline: var(--focus); outline-offset: 4px; }
 .lex__headword { grid-column: 1; display: flex; align-items: baseline; gap: 0.7rem; flex-wrap: wrap; }
 .lex__word {
@@ -187,18 +196,15 @@
 .lex__pos { font-family: var(--font-display); font-style: italic; font-size: var(--step-0); color: var(--ink-muted); }
 .lex__summary:hover .lex__word { color: var(--ink-soft); }
 
-/* + / − toggle indicator */
+/* + / − toggle (mobile only) */
 .lex__toggle { grid-column: 2; position: relative; width: 22px; height: 22px; color: var(--ink-muted); }
 .lex__toggle::before, .lex__toggle::after { content: ""; position: absolute; background: currentColor; }
 .lex__toggle::before { top: 50%; left: 0; right: 0; height: 1.5px; transform: translateY(-50%); }
 .lex__toggle::after { left: 50%; top: 0; bottom: 0; width: 1.5px; transform: translateX(-50%); transition: opacity var(--dur-fast) var(--ease); }
-.lex[open] .lex__toggle::after { opacity: 0; }
-.lex[open] .lex__toggle { color: var(--ink); }
+.lex.is-open .lex__toggle::after { opacity: 0; }
+.lex.is-open .lex__toggle { color: var(--ink); }
 
-/* Tighten the gap from headword to definition once expanded. */
-.lex[open] .lex__summary { padding-bottom: var(--space-2xs); }
 .lex__panel { padding: 0 0 var(--space-l); max-width: 54ch; }
-/* Definition: secondary — small, muted, italic. */
 .lex__def {
   font-family: var(--font-display);
   font-style: italic;
@@ -207,7 +213,6 @@
   color: var(--ink-muted);
   margin-bottom: var(--space-m);
 }
-/* "At Middle Rock": the emphasis — larger, darkest, with a kicker label above. */
 .lex__mrm {
   font-family: var(--font-display);
   font-size: var(--step-1);
@@ -224,34 +229,40 @@
   color: var(--ink-muted);
   margin-bottom: 0.5rem;
 }
-.lex[open] .lex__panel { animation: lex-in 0.4s var(--ease); }
 @keyframes lex-in { from { opacity: 0; transform: translateY(-4px); } to { opacity: 1; transform: none; } }
-@media (prefers-reduced-motion: reduce) {
-  .lex__word, .lex__toggle::after { transition: none; }
-  .lex[open] .lex__panel { animation: none; }
+
+/* MOBILE accordion: collapse the panel; tighten headword→panel. */
+@media (max-width: 759.98px) {
+  .js .lex__panel { display: none; }
+  .js .lex.is-open .lex__summary { padding-bottom: var(--space-2xs); }
+  .js .lex.is-open .lex__panel { display: block; animation: lex-in 0.4s var(--ease); }
 }
 
-/* Desktop / laptop: not an accordion — a full two-column glossary,
-   every entry open, headword left, definition + gloss right (matching
-   the "What we do" two-column composition). */
+/* DESKTOP: full glossary — word + definition left, "At Middle Rock"
+   right, split by a vertical hairline. Nothing collapses. */
 @media (min-width: 760px) {
   .lex {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr);
-    gap: var(--space-xl);
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr);
+    column-gap: var(--space-xl);
+    row-gap: var(--space-s);
     align-items: start;
     padding-block: var(--space-l);
   }
-  .lex__summary { display: block; padding: 0; cursor: default; }
-  .lex[open] .lex__summary { padding-bottom: 0; }
+  .lex__summary { grid-column: 1; grid-row: 1; padding: 0; cursor: default; pointer-events: none; }
   .lex__toggle { display: none; }
-  .lex__panel {
-    display: block !important;   /* always shown, regardless of open state */
-    max-width: none;
-    padding: 0 0 0 var(--space-xl);
+  .lex__panel { display: contents; }             /* let def + mrm flow into the grid */
+  .lex__def { grid-column: 1; grid-row: 2; margin: 0; max-width: 42ch; }
+  .lex__mrm {
+    grid-column: 2; grid-row: 1 / span 2;
+    padding-left: var(--space-xl);
     border-left: 1px solid var(--rule);
-    animation: none;
+    align-self: start;
   }
+}
+@media (prefers-reduced-motion: reduce) {
+  .lex__word, .lex__toggle::after { transition: none; }
+  .js .lex.is-open .lex__panel { animation: none; }
 }
 
 /* ----------------------- Team preview -------------------------- */

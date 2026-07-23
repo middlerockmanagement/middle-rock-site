@@ -127,51 +127,52 @@
       <div class="container">
         <h2 class="eyebrow section-label" id="values-title">What we value</h2>
         <!-- [APPROVAL REQUIRED] Definitions + "at Middle Rock" glosses are proposed copy — flagged for Amanda. -->
+        <!-- Desktop: full glossary (all shown). Mobile: accordion via js (main.js). -->
         <div class="lexicon" data-reveal>
-          <details class="lex" name="mrm-values" open>
-            <summary class="lex__summary">
+          <div class="lex is-open">
+            <button class="lex__summary" type="button" aria-expanded="true" aria-controls="lex-intentional">
               <span class="lex__headword">
                 <span class="lex__word" aria-hidden="true">in<span class="lex__sep">&middot;</span>ten<span class="lex__stress">&prime;</span><span class="lex__sep">&middot;</span>tion<span class="lex__sep">&middot;</span>al</span>
                 <span class="visually-hidden">intentional</span>
                 <span class="lex__pos">adj.</span>
               </span>
               <span class="lex__toggle" aria-hidden="true"></span>
-            </summary>
-            <div class="lex__panel">
+            </button>
+            <div class="lex__panel" id="lex-intentional">
               <p class="lex__def">Done with deliberate purpose; the product of choice, not chance.</p>
               <p class="lex__mrm"><span class="lex__mrm-label">At Middle Rock</span> Every career is different, so every strategy is built from scratch &mdash; nothing left to default.</p>
             </div>
-          </details>
+          </div>
 
-          <details class="lex" name="mrm-values">
-            <summary class="lex__summary">
+          <div class="lex">
+            <button class="lex__summary" type="button" aria-expanded="false" aria-controls="lex-innovative">
               <span class="lex__headword">
                 <span class="lex__word" aria-hidden="true">in<span class="lex__stress">&prime;</span><span class="lex__sep">&middot;</span>no<span class="lex__sep">&middot;</span>va<span class="lex__sep">&middot;</span>tive</span>
                 <span class="visually-hidden">innovative</span>
                 <span class="lex__pos">adj.</span>
               </span>
               <span class="lex__toggle" aria-hidden="true"></span>
-            </summary>
-            <div class="lex__panel">
+            </button>
+            <div class="lex__panel" id="lex-innovative">
               <p class="lex__def">Advancing new methods; original, resourceful, forward-looking.</p>
               <p class="lex__mrm"><span class="lex__mrm-label">At Middle Rock</span> We look beyond the expected path to create opportunities others overlook.</p>
             </div>
-          </details>
+          </div>
 
-          <details class="lex" name="mrm-values">
-            <summary class="lex__summary">
+          <div class="lex">
+            <button class="lex__summary" type="button" aria-expanded="false" aria-controls="lex-invested">
               <span class="lex__headword">
                 <span class="lex__word" aria-hidden="true">in<span class="lex__sep">&middot;</span>vest<span class="lex__stress">&prime;</span><span class="lex__sep">&middot;</span>ed</span>
                 <span class="visually-hidden">invested</span>
                 <span class="lex__pos">adj.</span>
               </span>
               <span class="lex__toggle" aria-hidden="true"></span>
-            </summary>
-            <div class="lex__panel">
+            </button>
+            <div class="lex__panel" id="lex-invested">
               <p class="lex__def">Committed wholly &mdash; of time, care, and belief.</p>
               <p class="lex__mrm"><span class="lex__mrm-label">At Middle Rock</span> We build with our artists, not around them. Their long game is ours.</p>
             </div>
-          </details>
+          </div>
         </div>
       </div>
     </section>

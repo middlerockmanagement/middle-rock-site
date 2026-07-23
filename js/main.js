@@ -104,4 +104,34 @@
       if (btn) apply(btn.getAttribute("data-filter"));
     });
   }
+
+  /* ---------- Values lexicon: accordion on mobile, full on desktop ---------- */
+  var lex = Array.prototype.slice.call(document.querySelectorAll(".lex"));
+  if (lex.length) {
+    var lexDesktop = window.matchMedia("(min-width: 760px)");
+    var setLex = function (item, open) {
+      item.classList.toggle("is-open", open);
+      var b = item.querySelector(".lex__summary");
+      if (b) b.setAttribute("aria-expanded", String(open));
+    };
+    lex.forEach(function (item) {
+      var btn = item.querySelector(".lex__summary");
+      if (!btn) return;
+      btn.addEventListener("click", function () {
+        if (lexDesktop.matches) return; // desktop isn't an accordion
+        var isOpen = item.classList.contains("is-open");
+        lex.forEach(function (o) { setLex(o, false); });
+        setLex(item, !isOpen);
+      });
+    });
+    var syncLex = function () {
+      if (lexDesktop.matches) {
+        lex.forEach(function (it) { setLex(it, true); });      // all shown
+      } else {
+        lex.forEach(function (it, i) { setLex(it, i === 0); }); // first open
+      }
+    };
+    syncLex();
+    lexDesktop.addEventListener("change", syncLex);
+  }
 })();
