@@ -1,5 +1,5 @@
 /* =============================================================
-   Middle Rock Management — main.js
+   Middle Rock Management - main.js
    Progressive enhancement only. The site is fully functional
    with JavaScript disabled; this file adds polish on top.
    ============================================================= */

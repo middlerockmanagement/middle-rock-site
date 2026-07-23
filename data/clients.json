@@ -1,5 +1,5 @@
 {
-  "_comment": "SOURCE OF TRUTH for the roster. Edit this file to add / remove / reorder clients, then run `node build.js` and refresh. Every field except id, name, and disciplines is optional — leave optional fields as null and they hide cleanly. 'featured: true' surfaces a client in the homepage preview. 'order' controls sort (lower = earlier). See README.md for the full workflow.",
+  "_comment": "SOURCE OF TRUTH for the roster. Edit this file to add / remove / reorder clients, then run `node build.js` and refresh. Every field except id, name, and disciplines is optional - leave optional fields as null and they hide cleanly. 'featured: true' surfaces a client in the homepage preview. 'order' controls sort (lower = earlier). See README.md for the full workflow.",
   "clients": [
     {
       "id": "philip-asta",

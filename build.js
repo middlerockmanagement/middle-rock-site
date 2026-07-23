@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /* =============================================================
-   Middle Rock Management — build.js
+   Middle Rock Management - build.js
    Zero-dependency generator. Reads data/clients.json and
    data/team.json and writes the roster + team markup DIRECTLY
    into the HTML files, between comment markers like:
@@ -16,11 +16,11 @@ const fs = require("fs");
 const path = require("path");
 
 /* =============================================================
-   SITE OPTIONS — flip a value, then run:  node build.js
+   SITE OPTIONS - flip a value, then run:  node build.js
    ------------------------------------------------------------
    showHomeRoster:
      false = the homepage does NOT show a "Selected roster"
-             preview (recommended — avoids implying some clients
+             preview (recommended - avoids implying some clients
              matter more). The full roster page is unaffected.
      true  = show a preview of up to 6 featured clients on the
              homepage. Choose which appear by setting
@@ -102,7 +102,7 @@ function teamMember(m, headingTag) {
   lines.push(`              <img src="${attr(m.image)}" alt="${attr(m.imageAlt || ("Portrait of " + m.name))}" width="600" height="800" loading="lazy" decoding="async">`);
   lines.push(`            </div>`);
   if (has(m.photoCredit)) {
-    lines.push(`            <p class="team-member__credit">Photography — ${esc(m.photoCredit)}</p>`);
+    lines.push(`            <p class="team-member__credit">Photography by ${esc(m.photoCredit)}</p>`);
   }
   lines.push(`          </div>`);
   lines.push(`          <div>`);
@@ -143,7 +143,7 @@ function filterButtons(clients) {
 
 /* ------------- home "Selected roster" section (optional) ------- */
 function homeRosterSection(featured) {
-  if (!OPTIONS.showHomeRoster) return ""; // toggled off — render nothing
+  if (!OPTIONS.showHomeRoster) return ""; // toggled off - render nothing
   const cards = featured.map((c) => rosterCard(c, "h3")).join("\n");
   return `    <section class="section container container--wide" aria-labelledby="roster-title">
       <div class="section-head">
@@ -188,7 +188,7 @@ function header(activeKey) {
   return `      <a class="skip-link" href="#main">Skip to content</a>
       <header class="site-header" data-header>
         <div class="container container--wide site-header__inner">
-          <a class="masthead-brand" href="/" aria-label="Middle Rock Management — home">
+          <a class="masthead-brand" href="/" aria-label="Middle Rock Management home">
             <img class="brand__logo" src="${SITE.logo}" alt="Middle Rock Management" width="1141" height="1014">
             <span class="brand__descriptor">Boutique entertainment management</span>
           </a>
@@ -239,13 +239,13 @@ function footer() {
             </div>
           </div>
           </div>
-          <a class="footer__logo-link" href="/" aria-label="Middle Rock Management — home">
+          <a class="footer__logo-link" href="/" aria-label="Middle Rock Management home">
             <img class="footer__logo" src="/assets/brand/middle-rock-management-logo-light.webp" alt="Middle Rock Management" width="1141" height="1014">
           </a>
         </div>
 
         <div class="footer__legal">
-          <!-- [APPROVAL REQUIRED] Placeholder legal text — please have Amanda / counsel review before launch. -->
+          <!-- [APPROVAL REQUIRED] Placeholder legal text - please have Amanda / counsel review before launch. -->
           <p>Middle Rock Management does not accept or review unsolicited submissions. Any unsolicited materials sent by email or through this website will not be read, returned, or considered, and may be deleted.</p>
           <p>All third-party names, logos, and trademarks are the property of their respective owners and are used for identification purposes only. No affiliation or endorsement is implied.</p>
           <p>This website is provided for general informational purposes only and does not constitute an offer of representation or professional advice.</p>
@@ -269,7 +269,7 @@ function inject(file, marker, content) {
   const end = `<!-- ${marker}:END -->`;
   const re = new RegExp(`${start}[\\s\\S]*?${end}`);
   if (!re.test(html)) {
-    console.warn(`  ! marker ${marker} not found in ${file} — skipped`);
+    console.warn(`  ! marker ${marker} not found in ${file} - skipped`);
     return false;
   }
   html = html.replace(re, `${start}\n${content}\n        ${end}`);

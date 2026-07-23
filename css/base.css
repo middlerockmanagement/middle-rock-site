@@ -1,5 +1,5 @@
 /* =============================================================
-   Middle Rock Management — base.css
+   Middle Rock Management - base.css
    Design tokens, reset, and foundational typography.
    Monochrome / neutral editorial system. Edit tokens below to
    tune the whole site from one place.
@@ -57,7 +57,7 @@
   --dur:  0.5s;
   --dur-fast: 0.25s;
 
-  --radius: 2px;           /* restraint — near-square */
+  --radius: 2px;           /* restraint - near-square */
   --focus: 2px solid var(--ink);
 }
 

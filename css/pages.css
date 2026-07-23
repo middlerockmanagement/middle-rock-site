@@ -1,5 +1,5 @@
 /* =============================================================
-   Middle Rock Management — pages.css
+   Middle Rock Management - pages.css
    Page-specific composition: hero, intro, values, contact band,
    page headers, 404. Grid-based with moments of asymmetry.
    ============================================================= */
@@ -63,7 +63,7 @@
   .hero__logo { height: clamp(200px, 62vw, 300px); }
   .hero__tagline { font-size: clamp(2.4rem, 12vw, 3.4rem); line-height: 1.02; }
   .hero__lede { font-size: var(--step-1); max-width: 34ch; }
-  .hero__scroll { display: none; }   /* content fills the screen on phones — no room needed */
+  .hero__scroll { display: none; }   /* content fills the screen on phones - no room needed */
 }
 
 /* --------------------------- Intro -----------------------------
@@ -72,7 +72,7 @@
 .intro__label { margin-bottom: var(--space-m); }
 /* ===================== About hero (editorial masthead) ===========
    A left section-label rail + one flowing content column. The whole
-   page opens like a magazine essay: title, deck, thesis, support —
+   page opens like a magazine essay: title, deck, thesis, support -
    read top-to-bottom in a single measured column, nothing floating. */
 .about-hero {
   padding-block: clamp(2.5rem, 1.5rem + 5vw, 5.5rem) clamp(3rem, 2rem + 5vw, 7rem);
@@ -204,11 +204,11 @@
 .section-head__aside { display: flex; align-items: center; gap: var(--space-s); }
 
 /* ------------------- Lexicon (home "What we value") -------------
-   MOBILE: tap-to-expand accordion — one entry open at a time.
-   DESKTOP: a full glossary, nothing to click — the word + its
+   MOBILE: tap-to-expand accordion - one entry open at a time.
+   DESKTOP: a full glossary, nothing to click - the word + its
    definition on the left, a vertical hairline, "At Middle Rock"
    on the right. Enhanced by main.js; without JS every entry shows. */
-.lexicon { /* no top rule here — the section label's underline is the top boundary */ }
+.lexicon { /* no top rule here - the section label's underline is the top boundary */ }
 .lex { border-bottom: 1px solid var(--rule); }
 
 /* Headword row: a reset button (no box) so it can toggle on mobile. */
@@ -234,7 +234,7 @@
 .lex__word {
   font-family: var(--font-display);
   font-size: var(--step-3);
-  line-height: 1.05;                 /* tight — no empty band under the word */
+  line-height: 1.05;                 /* tight - no empty band under the word */
   color: var(--ink);
   letter-spacing: -0.01em;
   transition: color var(--dur-fast) var(--ease);
@@ -287,7 +287,7 @@
   .js .lex.is-open .lex__panel { display: block; animation: lex-in 0.4s var(--ease); }
 }
 
-/* DESKTOP: full glossary — word + definition left, "At Middle Rock"
+/* DESKTOP: full glossary - word + definition left, "At Middle Rock"
    right, split by a vertical hairline. Nothing collapses. */
 @media (min-width: 760px) {
   .lex {
@@ -316,7 +316,7 @@
 }
 
 /* ----------------------- Team preview --------------------------
-   Portrait card: image, then name + title (no bio — full bios on /about/). */
+   Portrait card: image, then name + title (no bio - full bios on /about/). */
 .team-preview__grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(1.5rem, 1rem + 3vw, 3.5rem); }
 .mini-member { display: flex; flex-direction: column; }
 .mini-member__media { margin-bottom: var(--space-s); }
