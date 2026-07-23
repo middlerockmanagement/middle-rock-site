@@ -142,16 +142,29 @@ recommended dimensions.
 
 Your repo: **https://github.com/kshumanproof/middle-rock-gift**
 
-### First-time setup (once)
-In the VS Code terminal, from the project folder:
+### First-time setup — mostly done for you
+The repo is **already initialized**: there's one commit with every file, `origin` is set to your
+GitHub repo, and the branch is `main`. You do **not** need to run `git init` / `git remote add`
+again. All that's left is to push once (which needs your GitHub login).
+
+**Prerequisite:** Git must be installed on Windows so VS Code can use it. Check with
+`git --version` in the VS Code terminal; if it errors, install "Git for Windows" from
+https://git-scm.com/download/win (accept the defaults — it includes the login helper).
+
+**Push, one time**, from the project folder in the VS Code terminal:
 ```bash
-git init
-git add .
-git commit -m "Initial Middle Rock Management site"
-git branch -M main
-git remote add origin https://github.com/kshumanproof/middle-rock-gift.git
 git push -u origin main
 ```
+A browser window opens to sign in to GitHub — approve it, and the push completes.
+
+- *Prefer clicking?* Open this folder in VS Code, open the **Source Control** panel
+  (Ctrl+Shift+G), and click **Sync Changes** (or **Publish Branch**). It signs you in the same way.
+- *If push is rejected* with "updates were rejected" / "non-fast-forward", the GitHub repo
+  already has a file in it (e.g. a README made at creation). Run this once, then push again:
+  ```bash
+  git pull origin main --allow-unrelated-histories --no-edit
+  git push -u origin main
+  ```
 
 Then connect it to Vercel:
 1. Go to **vercel.com** and sign in with GitHub.
