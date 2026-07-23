@@ -237,9 +237,11 @@ function footer() {
             <h2>Connect</h2>
             <ul>
               <li><a href="mailto:${SITE.email}">${SITE.email}</a></li>
-              <li><a href="${SITE.linkedin}" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
-              <li><a href="${SITE.instagram}" target="_blank" rel="noopener noreferrer">Instagram</a></li>
             </ul>
+            <div class="footer__socials">
+              <a href="${SITE.linkedin}" target="_blank" rel="noopener noreferrer" aria-label="Middle Rock Management on LinkedIn">${ICON_LINKEDIN}</a>
+              <a href="${SITE.instagram}" target="_blank" rel="noopener noreferrer" aria-label="Middle Rock Management on Instagram">${ICON_INSTAGRAM}</a>
+            </div>
           </div>
         </div>
 

@@ -233,6 +233,11 @@
 .footer__col ul { list-style: none; padding: 0; display: grid; gap: 0.6rem; }
 .footer__col a { opacity: 0.85; transition: opacity var(--dur-fast) var(--ease); }
 .footer__col a:hover, .footer__col a:focus-visible { opacity: 1; }
+/* Social icons (same marks as the header) */
+.footer__socials { display: flex; align-items: center; gap: 1.1rem; margin-top: var(--space-m); }
+.footer__socials a { display: inline-flex; opacity: 0.75; }
+.footer__socials a:hover, .footer__socials a:focus-visible { opacity: 1; }
+.footer__socials svg { width: 22px; height: 22px; }
 
 /* Legal disclaimers */
 .footer__legal {
