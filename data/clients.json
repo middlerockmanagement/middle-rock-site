@@ -5,8 +5,8 @@
       "id": "philip-asta",
       "name": "Philip Asta",
       "disciplines": [
-        "Screenwriter",
-        "MG Fantasy Author"
+        "MG Fantasy Author",
+        "Screenwriter"
       ],
       "image": "/assets/images/placeholders/philip-asta.svg",
       "imageAlt": "Portrait of Philip Asta",
@@ -60,10 +60,10 @@
       "id": "tiff-campbell",
       "name": "Tiff Campbell",
       "disciplines": [
-        "Screenwriter",
-        "Filmmaker",
+        "Actress",
         "Author",
-        "Actress"
+        "Filmmaker",
+        "Screenwriter"
       ],
       "image": "/assets/images/placeholders/tiff-campbell.svg",
       "imageAlt": "Portrait of Tiff Campbell",
@@ -117,8 +117,8 @@
       "id": "carlo-nicdao",
       "name": "Carlo Nicdao",
       "disciplines": [
-        "Screenwriter",
-        "Producer"
+        "Producer",
+        "Screenwriter"
       ],
       "image": "/assets/images/placeholders/carlo-nicdao.svg",
       "imageAlt": "Portrait of Carlo Nicdao",
@@ -172,8 +172,8 @@
       "id": "nathaniel-shriver",
       "name": "Nathaniel Shriver",
       "disciplines": [
-        "Screenwriter",
-        "AD"
+        "AD",
+        "Screenwriter"
       ],
       "image": "/assets/images/placeholders/nathaniel-shriver.svg",
       "imageAlt": "Portrait of Nathaniel Shriver",
@@ -190,7 +190,11 @@
     {
       "id": "kris-shuman",
       "name": "Kris Shuman",
-      "disciplines": [],
+      "disciplines": [
+        "Filmmaker",
+        "Producer",
+        "Screenwriter"
+      ],
       "image": "/assets/images/placeholders/kris-shuman.svg",
       "imageAlt": "Portrait of Kris Shuman",
       "primaryUrl": null,
