@@ -103,12 +103,18 @@
   color: var(--ink-invert);
   padding-block: clamp(3.5rem, 2.5rem + 6vw, 8rem);
 }
-.statement__label {
+/* Shared section label: an eyebrow with a full-width rule under it.
+   Used by "What we do" (dark) and "What we value" (light) so their
+   headers match. */
+.section-label {
   display: block;
-  color: color-mix(in srgb, var(--ink-invert) 60%, transparent);
   padding-bottom: var(--space-s);
   margin-bottom: clamp(2rem, 1rem + 4vw, 4rem);
-  border-bottom: 1px solid color-mix(in srgb, var(--ink-invert) 20%, transparent);
+  border-bottom: 1px solid var(--rule);
+}
+.section--statement .section-label {
+  color: color-mix(in srgb, var(--ink-invert) 60%, transparent);
+  border-bottom-color: color-mix(in srgb, var(--ink-invert) 20%, transparent);
 }
 .statement__grid { display: grid; gap: var(--space-l); }
 .statement__lead {
@@ -223,6 +229,29 @@
 @media (prefers-reduced-motion: reduce) {
   .lex__word, .lex__toggle::after { transition: none; }
   .lex[open] .lex__panel { animation: none; }
+}
+
+/* Desktop / laptop: not an accordion — a full two-column glossary,
+   every entry open, headword left, definition + gloss right (matching
+   the "What we do" two-column composition). */
+@media (min-width: 760px) {
+  .lex {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr);
+    gap: var(--space-xl);
+    align-items: start;
+    padding-block: var(--space-l);
+  }
+  .lex__summary { display: block; padding: 0; cursor: default; }
+  .lex[open] .lex__summary { padding-bottom: 0; }
+  .lex__toggle { display: none; }
+  .lex__panel {
+    display: block !important;   /* always shown, regardless of open state */
+    max-width: none;
+    padding: 0 0 0 var(--space-xl);
+    border-left: 1px solid var(--rule);
+    animation: none;
+  }
 }
 
 /* ----------------------- Team preview -------------------------- */
