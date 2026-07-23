@@ -280,6 +280,11 @@
 }
 .mini-member__bio { font-size: var(--step--1); color: var(--ink-soft); margin-top: 0.7rem; max-width: 42ch; }
 .team-preview__more { margin-top: var(--space-l); text-align: right; }
+/* Mobile (stacked): alternate sides — 1st photo-left, 2nd photo-right. */
+@media (max-width: 719.98px) {
+  .mini-member:nth-child(even) { direction: rtl; }
+  .mini-member:nth-child(even) > * { direction: ltr; }
+}
 @media (max-width: 420px) { .mini-member { grid-template-columns: 42% 1fr; gap: var(--space-m); } }
 
 /* --------------------------- Contact band ---------------------- */
