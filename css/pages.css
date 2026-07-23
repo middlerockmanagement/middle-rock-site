@@ -101,8 +101,16 @@
 .about-hero__aside {
   background: var(--panel-soft);
   color: var(--ink-soft);
-  border: 1px solid var(--rule-strong);
   padding: clamp(1.75rem, 1.25rem + 3vw, 3rem);
+}
+/* Mobile: let the panel bleed to the page edges with the gutter as its
+   inner padding, so its text lines up vertically with the title/deck above
+   (no boxed border offsetting the alignment). */
+@media (max-width: 819px) {
+  .about-hero__aside {
+    margin-inline: calc(-1 * var(--gutter));
+    padding-inline: var(--gutter);
+  }
 }
 .about-hero__statement {
   font-family: var(--font-display);
