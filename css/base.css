@@ -18,6 +18,7 @@
   --paper-deep: #efece5;   /* alternating section tint */
   --ink-invert: #f6f4ef;   /* text on dark */
   --panel-dark: #16130f;   /* dark editorial panel */
+  --panel-soft: #e4ddd0;   /* soft warm-stone panel (light alt to panel-dark) */
 
   /* --- Type families ---------------------------------------------
      Ships with a high-quality system stack so the site is fast and

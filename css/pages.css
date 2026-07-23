@@ -76,8 +76,10 @@
    the right (dark panel), divided by a hairline bar. Stacks on mobile,
    where the dark panel simply sits beneath the definition. */
 .about-hero {
-  padding-block: clamp(2rem, 1rem + 4vw, 4rem) clamp(3rem, 2rem + 5vw, 6.5rem);
+  padding-block: clamp(2rem, 1rem + 4vw, 4rem) clamp(1.5rem, 1rem + 2vw, 3rem);
 }
+/* draw the team section up so the hero and roster read as one page */
+.about-hero + .section { padding-top: clamp(2rem, 1rem + 3vw, 4rem); }
 .about-hero__split { display: grid; gap: var(--space-l); }
 
 .about-hero__title {
@@ -97,8 +99,9 @@
 }
 
 .about-hero__aside {
-  background: var(--panel-dark);
-  color: var(--ink-invert);
+  background: var(--panel-soft);
+  color: var(--ink-soft);
+  border: 1px solid var(--rule-strong);
   padding: clamp(1.75rem, 1.25rem + 3vw, 3rem);
 }
 .about-hero__statement {
@@ -106,14 +109,14 @@
   font-size: var(--step-3);
   line-height: 1.16;
   letter-spacing: -0.01em;
-  color: var(--ink-invert);
+  color: var(--ink);
   max-width: 24ch;
   margin: 0;
 }
 .about-hero__body {
   font-size: var(--step-1);
   line-height: 1.55;
-  color: color-mix(in srgb, var(--ink-invert) 82%, transparent);
+  color: var(--ink-soft);
   max-width: 52ch;
   margin: var(--space-m) 0 0;
 }
