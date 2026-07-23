@@ -188,14 +188,10 @@
 
 /* Closing CTA (email + policy) with the logo as a sign-off */
 .footer__cta {
-  display: grid;
-  gap: var(--space-l);
-  align-items: end;
   padding-bottom: clamp(2.5rem, 1.5rem + 3vw, 4.5rem);
   margin-bottom: clamp(2.5rem, 1.5rem + 3vw, 4.5rem);
   border-bottom: 1px solid color-mix(in srgb, var(--ink-invert) 15%, transparent);
 }
-@media (min-width: 820px) { .footer__cta { grid-template-columns: 1.5fr auto; align-items: center; } }
 .footer__cta-eyebrow { color: color-mix(in srgb, var(--ink-invert) 55%, transparent); }
 .footer__email {
   display: inline-block;
@@ -211,15 +207,20 @@
 .footer__email:hover, .footer__email:focus-visible { border-bottom-color: currentColor; }
 .footer__policy { margin-top: var(--space-m); max-width: 46ch; color: color-mix(in srgb, var(--ink-invert) 68%, transparent); }
 .footer__policy strong { color: var(--ink-invert); }
-.footer__logo-link { display: inline-block; justify-self: start; }
-@media (min-width: 820px) { .footer__logo-link { justify-self: end; } }
-.footer__logo { height: clamp(88px, 11vw, 150px); width: auto; }
+.footer__logo-link { display: inline-block; justify-self: end; align-self: start; }
+.footer__logo { height: clamp(78px, 11vw, 140px); width: auto; }
 
+/* Nav (Explore + Connect) on the left, logo on the right */
 .footer-grid {
   display: grid;
-  gap: var(--space-l) clamp(2rem, 8vw, 6rem);
-  grid-template-columns: 1fr 1fr;
+  gap: var(--space-l) clamp(1.5rem, 5vw, 4rem);
+  grid-template-columns: 1fr auto;
   align-items: start;
+}
+.footer-nav {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-l) clamp(1.5rem, 6vw, 5rem);
 }
 .footer__col h2 {
   font-family: var(--font-sans);
@@ -261,7 +262,7 @@
 @media (max-width: 640px) {
   .footer__email { font-size: var(--step-2); }   /* not oversized on phones */
 }
-@media (max-width: 560px) { .footer-grid { grid-template-columns: 1fr; } }
+@media (max-width: 560px) { .footer-nav { grid-template-columns: 1fr; gap: var(--space-l); } }
 
 /* Back-to-top button — site style (paper circle, ink chevron) */
 .to-top {

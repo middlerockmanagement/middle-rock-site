@@ -116,16 +116,14 @@ function teamMember(m, headingTag) {
 
 /* --------------------- mini member (home) ---------------------- */
 function miniMember(m) {
+  // Homepage preview: portrait + name + title only. Full bios live on /about/.
   const lines = [];
   lines.push(`        <article class="mini-member">`);
-  lines.push(`          <div class="img-window ratio-4-5 img-mono">`);
-  lines.push(`            <img src="${attr(m.image)}" alt="${attr(m.imageAlt || ("Portrait of " + m.name))}" width="260" height="325" loading="lazy" decoding="async">`);
+  lines.push(`          <div class="img-window ratio-4-5 img-mono mini-member__media">`);
+  lines.push(`            <img src="${attr(m.image)}" alt="${attr(m.imageAlt || ("Portrait of " + m.name))}" width="640" height="800" loading="lazy" decoding="async">`);
   lines.push(`          </div>`);
-  lines.push(`          <div>`);
-  lines.push(`            <h3 class="mini-member__name">${esc(m.name)}</h3>`);
-  if (has(m.role)) lines.push(`            <p class="mini-member__role">${esc(m.role)}</p>`);
-  if (has(m.bio)) lines.push(`            <p class="mini-member__bio">${esc(m.bio)}</p>`);
-  lines.push(`          </div>`);
+  lines.push(`          <h3 class="mini-member__name">${esc(m.name)}</h3>`);
+  if (has(m.role)) lines.push(`          <p class="mini-member__role">${esc(m.role)}</p>`);
   lines.push(`        </article>`);
   return lines.join("\n");
 }
@@ -221,12 +219,10 @@ function footer() {
             <a class="footer__email" data-e-user="${SITE.emailUser}" data-e-domain="${SITE.emailDomain}" href="/contact/">Email us <span class="footer__email-arrow" aria-hidden="true">&rarr;</span></a>
             <p class="footer__policy"><strong>We are not currently accepting unsolicited submissions.</strong> Any unsolicited material sent via email or form will be deleted.</p>
           </div>
-          <a class="footer__logo-link" href="/" aria-label="Middle Rock Management — home">
-            <img class="footer__logo" src="/assets/brand/middle-rock-management-logo-light.webp" alt="Middle Rock Management" width="1141" height="1014">
-          </a>
         </div>
 
         <div class="footer-grid">
+          <div class="footer-nav">
           <nav class="footer__col" aria-label="Explore">
             <h2>Explore</h2>
             <ul>
@@ -243,6 +239,10 @@ function footer() {
               <a href="${SITE.instagram}" target="_blank" rel="noopener noreferrer" aria-label="Middle Rock Management on Instagram">${ICON_INSTAGRAM}</a>
             </div>
           </div>
+          </div>
+          <a class="footer__logo-link" href="/" aria-label="Middle Rock Management — home">
+            <img class="footer__logo" src="/assets/brand/middle-rock-management-logo-light.webp" alt="Middle Rock Management" width="1141" height="1014">
+          </a>
         </div>
 
         <div class="footer__legal">

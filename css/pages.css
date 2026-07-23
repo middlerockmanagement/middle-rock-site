@@ -267,25 +267,21 @@
   .js .lex.is-open .lex__panel { animation: none; }
 }
 
-/* ----------------------- Team preview -------------------------- */
-.team-preview__grid { display: grid; gap: clamp(1.5rem, 1rem + 3vw, 3rem); }
-@media (min-width: 720px) { .team-preview__grid { grid-template-columns: 1fr 1fr; } }
-
-.mini-member { display: grid; grid-template-columns: clamp(150px, 20vw, 230px) 1fr; gap: var(--space-l); align-items: start; }
-.mini-member__name { font-size: var(--step-2); }
+/* ----------------------- Team preview --------------------------
+   Portrait card: image, then name + title (no bio — full bios on /about/). */
+.team-preview__grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(1.5rem, 1rem + 3vw, 3.5rem); }
+.mini-member { display: flex; flex-direction: column; }
+.mini-member__media { margin-bottom: var(--space-s); }
+.mini-member__name { font-family: var(--font-display); font-size: var(--step-2); line-height: 1.05; color: var(--ink); }
 .mini-member__role {
   font-size: var(--step--1);
   letter-spacing: 0.14em; text-transform: uppercase;
-  color: var(--ink-muted); margin-top: 0.4rem;
+  color: var(--ink-muted); margin-top: 0.5rem;
 }
-.mini-member__bio { font-size: var(--step--1); color: var(--ink-soft); margin-top: 0.7rem; max-width: 42ch; }
 .team-preview__more { margin-top: var(--space-l); text-align: right; }
-/* Mobile (stacked): alternate sides — 1st photo-left, 2nd photo-right. */
-@media (max-width: 719.98px) {
-  .mini-member:nth-child(even) { direction: rtl; }
-  .mini-member:nth-child(even) > * { direction: ltr; }
+@media (max-width: 560px) {
+  .team-preview__grid { grid-template-columns: 1fr; gap: var(--space-xl); }
 }
-@media (max-width: 420px) { .mini-member { grid-template-columns: 42% 1fr; gap: var(--space-m); } }
 
 /* --------------------------- Contact band ---------------------- */
 .contact-band__grid { display: grid; gap: var(--space-l); align-items: end; }
