@@ -95,6 +95,49 @@
   .intro__body { align-self: end; }
 }
 
+/* ------------------- Statement panel (home "What we do") --------
+   A full-bleed dark editorial band: the deliberate contrast moment
+   right after the light hero. Monochrome, framed by hairlines. */
+.section--statement {
+  background: var(--panel-dark);
+  color: var(--ink-invert);
+  padding-block: clamp(3.5rem, 2.5rem + 6vw, 8rem);
+}
+.statement__label {
+  display: block;
+  color: color-mix(in srgb, var(--ink-invert) 60%, transparent);
+  padding-bottom: var(--space-s);
+  margin-bottom: clamp(2rem, 1rem + 4vw, 4rem);
+  border-bottom: 1px solid color-mix(in srgb, var(--ink-invert) 20%, transparent);
+}
+.statement__grid { display: grid; gap: var(--space-l); }
+.statement__lead {
+  font-family: var(--font-display);
+  font-size: var(--step-4);
+  line-height: 1.16;
+  letter-spacing: -0.01em;
+  color: var(--ink-invert);
+  max-width: 20ch;
+}
+.statement__body {
+  color: color-mix(in srgb, var(--ink-invert) 82%, transparent);
+  font-size: var(--step-1);
+  line-height: 1.55;
+  max-width: 46ch;
+}
+.statement__body p + p { margin-top: var(--space-m); }
+@media (min-width: 860px) {
+  .statement__grid {
+    grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr);
+    gap: var(--space-2xl);
+    align-items: start;
+  }
+  .statement__body {
+    padding-left: var(--space-xl);
+    border-left: 1px solid color-mix(in srgb, var(--ink-invert) 20%, transparent);
+  }
+}
+
 /* Section heading pattern with eyebrow + numeral */
 .section-head {
   display: flex; align-items: baseline; justify-content: space-between;
@@ -112,28 +155,28 @@
   display: grid;
   gap: var(--space-xs);
   padding-block: var(--space-l);
-  border-top: 1px solid color-mix(in srgb, var(--ink-invert) 18%, transparent);
+  border-top: 1px solid var(--rule);
   grid-template-columns: auto 1fr;
   column-gap: var(--space-l);
   align-items: baseline;
 }
-.value:last-child { border-bottom: 1px solid color-mix(in srgb, var(--ink-invert) 18%, transparent); }
+.value:last-child { border-bottom: 1px solid var(--rule); }
 .value__word {
   font-family: var(--font-display);
   font-size: var(--step-3);
-  color: var(--ink-invert);
+  color: var(--ink);
   letter-spacing: -0.01em;
 }
 .value__num {
   font-family: var(--font-display);
   font-size: var(--step-1);
-  color: color-mix(in srgb, var(--ink-invert) 45%, transparent);
+  color: var(--ink-faint);
   font-variant-numeric: tabular-nums;
 }
 .value__body {
   font-size: var(--step-1);
   line-height: 1.4;
-  color: color-mix(in srgb, var(--ink-invert) 88%, transparent);
+  color: var(--ink-soft);
   max-width: 46ch;
   grid-column: 2;
 }
