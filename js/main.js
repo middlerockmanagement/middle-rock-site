@@ -134,4 +134,17 @@
     syncLex();
     lexDesktop.addEventListener("change", syncLex);
   }
+
+  /* ---------------- Back-to-top button ---------------- */
+  var toTop = document.querySelector("[data-to-top]");
+  if (toTop) {
+    var onTopScroll = function () {
+      toTop.setAttribute("data-visible", window.scrollY > 600 ? "true" : "false");
+    };
+    onTopScroll();
+    window.addEventListener("scroll", onTopScroll, { passive: true });
+    toTop.addEventListener("click", function () {
+      window.scrollTo({ top: 0, behavior: reduceMotion ? "auto" : "smooth" });
+    });
+  }
 })();

@@ -160,7 +160,7 @@
    DESKTOP: a full glossary, nothing to click — the word + its
    definition on the left, a vertical hairline, "At Middle Rock"
    on the right. Enhanced by main.js; without JS every entry shows. */
-.lexicon { border-top: 1px solid var(--rule); }
+.lexicon { /* no top rule here — the section label's underline is the top boundary */ }
 .lex { border-bottom: 1px solid var(--rule); }
 
 /* Headword row: a reset button (no box) so it can toggle on mobile. */
