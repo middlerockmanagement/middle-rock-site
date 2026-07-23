@@ -262,11 +262,10 @@
 @media (max-width: 640px) {
   .footer__email { font-size: var(--step-2); }   /* not oversized on phones */
 }
-/* Mobile: logo drops below the menu on its own row, left-aligned and larger */
+/* Mobile: keep the logo at right, but centred against the menu and inset from the edge */
 @media (max-width: 620px) {
-  .footer-grid { grid-template-columns: 1fr; }
-  .footer__logo-link { justify-self: start; margin-top: var(--space-m); }
-  .footer__logo { height: clamp(120px, 32vw, 170px); }
+  .footer__logo-link { align-self: center; }
+  .footer__logo { height: clamp(96px, 24vw, 130px); margin-right: var(--space-m); }
 }
 @media (max-width: 560px) { .footer-nav { grid-template-columns: 1fr; gap: var(--space-l); } }
 
