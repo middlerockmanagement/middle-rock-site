@@ -262,6 +262,12 @@
 @media (max-width: 640px) {
   .footer__email { font-size: var(--step-2); }   /* not oversized on phones */
 }
+/* Mobile: logo drops below the menu on its own row, left-aligned and larger */
+@media (max-width: 620px) {
+  .footer-grid { grid-template-columns: 1fr; }
+  .footer__logo-link { justify-self: start; margin-top: var(--space-m); }
+  .footer__logo { height: clamp(120px, 32vw, 170px); }
+}
 @media (max-width: 560px) { .footer-nav { grid-template-columns: 1fr; gap: var(--space-l); } }
 
 /* Back-to-top button — site style (paper circle, ink chevron) */
