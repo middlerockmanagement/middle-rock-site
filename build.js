@@ -241,10 +241,6 @@ function footer() {
               <li><a href="${SITE.instagram}" target="_blank" rel="noopener noreferrer">Instagram</a></li>
             </ul>
           </div>
-          <div class="footer__col footer__brand-col">
-            <span class="brand__wordmark">Middle Rock Management</span>
-            <p class="footer__tagline">intentional. innovative. invested.</p>
-          </div>
         </div>
 
         <div class="footer__legal">
@@ -256,7 +252,6 @@ function footer() {
 
         <div class="footer__bottom">
           <p>&copy; <span data-year>2026</span> Middle Rock Management. All rights reserved.</p>
-          <p class="footer__bottom-tag">intentional. innovative. invested.</p>
         </div>
       </div>
 
