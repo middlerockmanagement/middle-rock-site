@@ -1,0 +1,18 @@
+# OS / editor cruft
+.DS_Store
+Thumbs.db
+desktop.ini
+*.swp
+.vscode/*
+!.vscode/extensions.json
+
+# Node (only if you add tooling later)
+node_modules/
+npm-debug.log*
+
+# Vercel
+.vercel
+
+# Scratch
+*.log
+_*.tmp

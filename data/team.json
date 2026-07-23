@@ -1,0 +1,25 @@
+{
+  "_comment": "SOURCE OF TRUTH for the About / Our Team section. Edit here, then run `node build.js`. Bios are verbatim from the current site; edit only for clarity per Amanda's approval.",
+  "team": [
+    {
+      "id": "amanda-robles",
+      "name": "Amanda (Mandy) Robles",
+      "role": "Founder. Owner. Manager.",
+      "image": "/assets/images/placeholders/amanda-robles.svg",
+      "imageAlt": "Portrait of Amanda (Mandy) Robles",
+      "photoCredit": "LOTTA Photography",
+      "bio": "Mandy launched Middle Rock Management in 2025, primarily as a means to support bold, authentic voices and the stories they tell. As MRM continues to grow, Mandy is dedicated to maintaining an environment of integrity, humanity, and gratitude.",
+      "order": 10
+    },
+    {
+      "id": "corrine-ashley",
+      "name": "Corrine Ashley",
+      "role": "Producer. Manager. Goofball.",
+      "image": "/assets/images/placeholders/corrine-ashley.svg",
+      "imageAlt": "Portrait of Corrine Ashley",
+      "photoCredit": null,
+      "bio": "After launching her own company, Corrine has joined forces with Mandy and Middle Rock Management to create a fearless partnership built on passion, grit, and a shared mission to build artists' careers—come hell or high water.",
+      "order": 20
+    }
+  ]
+}
