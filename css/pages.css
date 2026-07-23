@@ -48,13 +48,13 @@
   bottom: clamp(1rem, 3vh, 2rem);
   transform: translateX(-50%);
   display: inline-flex; align-items: center; justify-content: center;
-  width: 44px; height: 44px;
-  color: var(--ink-faint);
+  width: 48px; height: 48px;
+  color: var(--ink-muted);
   transition: color var(--dur-fast) var(--ease);
 }
 .hero__scroll:hover, .hero__scroll:focus-visible { color: var(--ink); }
-.hero__scroll svg { width: 24px; height: 24px; animation: hero-bob 2.6s var(--ease) infinite; }
-@keyframes hero-bob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(5px); } }
+.hero__scroll svg { width: 32px; height: 32px; animation: hero-bob 1.9s var(--ease) infinite; }
+@keyframes hero-bob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(8px); } }
 @media (prefers-reduced-motion: reduce) { .hero__scroll svg { animation: none; } }
 
 /* Mobile-first hero: sized for the phone, not a shrunk desktop. */
