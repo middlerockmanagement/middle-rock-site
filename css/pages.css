@@ -4,13 +4,31 @@
    page headers, 404. Grid-based with moments of asymmetry.
    ============================================================= */
 
-/* ------------------------- Hero (home) ------------------------- */
-.hero { padding-block: clamp(4rem, 2rem + 10vw, 9rem) clamp(3rem, 1.5rem + 6vw, 6rem); }
-.hero__inner { display: grid; gap: var(--space-l); }
+/* ------------------------- Hero (home) -------------------------
+   A framed, full-height masthead: a hairline rule under the eyebrow
+   and above the meta row bracket the composition, so the type reads
+   as one deliberate statement rather than floating blocks. */
+.hero { border-bottom: 1px solid var(--rule); }
+.hero__grid {
+  min-height: calc(100svh - var(--header-h));
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr) auto;
+  padding-block: clamp(1.25rem, 0.5rem + 2vw, 2.5rem) 0;
+}
+.hero__top {
+  padding-bottom: var(--space-m);
+  border-bottom: 1px solid var(--rule);
+}
+.hero__mid {
+  align-self: center;
+  display: grid;
+  gap: var(--space-l);
+  padding-block: clamp(2rem, 6vh, 5rem);
+}
 .hero__tagline {
   font-family: var(--font-display);
   font-size: var(--step-6);
-  line-height: 0.98;
+  line-height: 0.95;
   letter-spacing: -0.02em;
   color: var(--ink);
 }
@@ -18,39 +36,74 @@
 .hero__lede {
   font-family: var(--font-display);
   font-size: var(--step-3);
-  line-height: 1.22;
+  line-height: 1.24;
   color: var(--ink-soft);
-  max-width: 22ch;
+  max-width: 24ch;
 }
 .hero__meta {
   display: flex; align-items: center; gap: var(--space-m);
   flex-wrap: wrap;
-  padding-top: var(--space-s);
+  padding-block: var(--space-m);
+  border-top: 1px solid var(--rule);
 }
+.hero__scroll {
+  margin-left: auto;
+  display: inline-flex; align-items: center; gap: 0.75rem;
+  font-size: var(--step--1);
+  letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--ink-faint);
+}
+.hero__scroll-line { display: inline-block; width: 3rem; height: 1px; background: var(--rule-strong); }
 
-/* Asymmetric hero on wide screens */
+/* Asymmetric tagline + lede on wider screens, baseline-aligned. */
 @media (min-width: 900px) {
-  .hero__inner {
-    grid-template-columns: 1.35fr 1fr;
+  .hero__mid {
+    grid-template-columns: minmax(0, 1.45fr) minmax(0, 1fr);
     align-items: end;
     gap: var(--space-xl);
   }
-  .hero__lede { align-self: end; padding-bottom: 0.5rem; }
+  .hero__lede { justify-self: end; padding-bottom: 0.35rem; }
 }
 
-/* --------------------------- Intro ----------------------------- */
+/* Mobile-first hero: sized for the phone, not a shrunk desktop. */
+@media (max-width: 640px) {
+  .hero__grid { grid-template-rows: auto 1fr auto; }
+  .hero__mid { gap: var(--space-m); padding-block: clamp(1.5rem, 6vh, 3rem); }
+  .hero__tagline { font-size: clamp(2.9rem, 15vw, 4.4rem); line-height: 0.98; }
+  .hero__lede { font-size: var(--step-2); line-height: 1.3; max-width: 32ch; }
+  .hero__meta { flex-direction: column; align-items: stretch; gap: var(--space-s); }
+  .hero__meta .btn { width: 100%; justify-content: center; }
+  .hero__meta .link-underline { text-align: center; padding-block: 0.35rem; }
+  .hero__scroll { display: none; }
+}
+
+/* --------------------------- Intro -----------------------------
+   Distinct from the hero: a labelled, larger editorial lead so the
+   second screen doesn't echo the first. */
+.intro__label { margin-bottom: var(--space-m); }
 .intro__grid { display: grid; gap: var(--space-l); }
 .intro__statement {
   font-family: var(--font-display);
-  font-size: var(--step-3);
-  line-height: 1.28;
+  font-size: var(--step-4);
+  line-height: 1.14;
+  letter-spacing: -0.01em;
   color: var(--ink);
-  max-width: 24ch;
+  max-width: 20ch;
 }
-.intro__body { max-width: var(--measure); color: var(--ink-soft); }
-.intro__body p + p { margin-top: var(--space-s); }
+.intro__body {
+  max-width: var(--measure);
+  color: var(--ink-soft);
+  font-size: var(--step-1);
+  line-height: 1.5;
+}
+.intro__body p + p { margin-top: var(--space-m); }
 @media (min-width: 860px) {
-  .intro__grid { grid-template-columns: 1fr 1fr; gap: var(--space-2xl); align-items: start; }
+  .intro__grid {
+    grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+    gap: var(--space-2xl);
+    align-items: start;
+  }
+  .intro__body { align-self: end; }
 }
 
 /* Section heading pattern with eyebrow + numeral */

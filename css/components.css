@@ -46,14 +46,19 @@
 }
 .site-header[data-scrolled="true"] {
   border-bottom-color: var(--rule);
+  background: color-mix(in srgb, var(--paper) 94%, transparent);
 }
 .site-header__inner {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: var(--space-m);
-  min-height: 72px;
+  min-height: var(--header-h);
   padding-block: 0.75rem;
+  transition: min-height var(--dur) var(--ease);
+}
+.site-header[data-scrolled="true"] .site-header__inner {
+  min-height: var(--header-h-scrolled);
 }
 .brand {
   display: inline-flex;
@@ -61,7 +66,15 @@
   gap: 0.7rem;
   flex-shrink: 0;
 }
-.brand__logo { height: clamp(46px, 3.4vw, 56px); width: auto; }
+.brand__logo {
+  height: clamp(64px, 6.6vw, 96px);
+  width: auto;
+  transition: height var(--dur) var(--ease);
+}
+.site-header[data-scrolled="true"] .brand__logo { height: clamp(46px, 4.6vw, 60px); }
+@media (prefers-reduced-motion: reduce) {
+  .site-header__inner, .brand__logo { transition: none; }
+}
 .brand__wordmark {
   font-family: var(--font-display);
   font-size: var(--step-0);
@@ -124,7 +137,7 @@
   .nav-toggle { display: inline-flex; }
   .nav {
     position: fixed;
-    inset: 72px 0 auto 0;
+    inset: var(--header-h) 0 auto 0;
     flex-direction: column;
     align-items: flex-start;
     gap: 0;
@@ -137,8 +150,12 @@
     transition: opacity var(--dur-fast) var(--ease),
                 transform var(--dur-fast) var(--ease),
                 visibility var(--dur-fast);
-    max-height: calc(100vh - 72px);
+    max-height: calc(100svh - var(--header-h));
     overflow-y: auto;
+  }
+  .site-header[data-scrolled="true"] .nav {
+    inset-block-start: var(--header-h-scrolled);
+    max-height: calc(100svh - var(--header-h-scrolled));
   }
   .nav[data-open="true"] { opacity: 1; visibility: visible; transform: translateY(0); }
   /* No-JS fallback: the toggle needs JavaScript, so without it show the nav statically. */
