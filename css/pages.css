@@ -245,6 +245,7 @@
   .lex {
     display: grid;
     grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr);
+    grid-template-rows: min-content 1fr;   /* word row hugs the word; slack falls below the definition */
     column-gap: var(--space-xl);
     row-gap: var(--space-2xs);
     align-items: start;
@@ -253,7 +254,7 @@
   .lex__summary { grid-column: 1; grid-row: 1; padding: 0; cursor: default; pointer-events: none; }
   .lex__toggle { display: none; }
   .lex__panel { display: contents; }             /* let def + mrm flow into the grid */
-  .lex__def { grid-column: 1; grid-row: 2; margin: 0; max-width: 42ch; }
+  .lex__def { grid-column: 1; grid-row: 2; margin: 0; max-width: 42ch; align-self: start; }
   .lex__mrm {
     grid-column: 2; grid-row: 1 / span 2;
     padding-left: var(--space-xl);
