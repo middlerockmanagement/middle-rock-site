@@ -18,7 +18,7 @@
   padding-block: clamp(2.5rem, 6vh, 5.5rem);
 }
 .hero__logo-link { display: inline-block; }
-.hero__logo { height: clamp(150px, 30vw, 320px); width: auto; }
+.hero__logo { height: clamp(170px, 32vw, 360px); width: auto; }
 .hero__tagline {
   font-family: var(--font-display);
   font-size: var(--step-5);
@@ -60,7 +60,7 @@
 /* Mobile-first hero: sized for the phone, not a shrunk desktop. */
 @media (max-width: 640px) {
   .hero__grid { gap: var(--space-l); padding-block: clamp(2rem, 5vh, 3.5rem); }
-  .hero__logo { height: clamp(120px, 42vw, 210px); }
+  .hero__logo { height: clamp(200px, 62vw, 300px); }
   .hero__tagline { font-size: clamp(2.4rem, 12vw, 3.4rem); line-height: 1.02; }
   .hero__lede { font-size: var(--step-1); max-width: 34ch; }
   .hero__scroll { display: none; }   /* content fills the screen on phones — no room needed */
