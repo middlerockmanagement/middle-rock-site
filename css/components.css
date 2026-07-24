@@ -462,13 +462,15 @@
   .team-member + .team-member { border-top: 1px solid var(--rule); padding-top: var(--space-s); }
 }
 
-/* Desktop: full card, no accordion chrome. */
+/* Desktop: full cards, no accordion chrome. Each member is a vertical
+   card - portrait, then name/role, then bio - so the two sit cleanly
+   side by side (2-up) on wider screens. */
 @media (min-width: 621px) {
   .team-member {
     display: grid;
-    grid-template-columns: minmax(0, 300px) 1fr;
-    grid-template-areas: "media head" "media copy";
-    column-gap: clamp(1.5rem, 1rem + 3vw, 4rem);
+    grid-template-columns: 1fr;
+    grid-template-areas: "media" "head" "copy";
+    row-gap: var(--space-m);
     align-items: start;
   }
   /* Flatten the h3 + detail wrappers so their contents drop onto the card
@@ -480,7 +482,18 @@
   .team-member__thumb,
   .team-member__chev { display: none; }
   .team-member__media { grid-area: media; }
+  .team-member__media .img-window { max-width: 360px; }
   .team-member__copy { grid-area: copy; }
-  .team-member__name { font-size: var(--step-3); line-height: 1.05; margin-top: 0.25rem; }
-  .team-member__role { margin-top: 0.6rem; }
+  .team-member__bio { margin-top: 0; max-width: 44ch; }
+  .team-member__name { font-size: var(--step-3); line-height: 1.05; }
+  .team-member__role { margin-top: 0.5rem; }
+}
+
+/* Two members side by side once there's room. */
+@media (min-width: 760px) {
+  .team-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: clamp(2.5rem, 1.5rem + 3vw, 5rem);
+    align-items: start;
+  }
 }
