@@ -138,6 +138,30 @@
     lexDesktop.addEventListener("change", syncLex);
   }
 
+  /* -------- Roster: accordion on mobile, full cards on desktop -------- */
+  var rcards = Array.prototype.slice.call(document.querySelectorAll("[data-roster-grid] .card"));
+  if (rcards.length) {
+    var rosterMobile = window.matchMedia("(max-width: 620px)");
+    var setRC = function (item, open) {
+      item.classList.toggle("is-open", open);
+      var b = item.querySelector(".card__summary");
+      if (b) b.setAttribute("aria-expanded", String(open));
+    };
+    rcards.forEach(function (item) {
+      var btn = item.querySelector(".card__summary");
+      if (!btn) return;
+      btn.addEventListener("click", function () {
+        if (!rosterMobile.matches) return; // desktop isn't an accordion
+        setRC(item, !item.classList.contains("is-open"));
+      });
+    });
+    var syncRC = function () {
+      rcards.forEach(function (it) { setRC(it, !rosterMobile.matches); });
+    };
+    syncRC();
+    rosterMobile.addEventListener("change", syncRC);
+  }
+
   /* -------- Team: accordion on mobile, full cards on desktop -------- */
   var team = Array.prototype.slice.call(document.querySelectorAll("[data-team-member]"));
   if (team.length) {

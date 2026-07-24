@@ -1,11 +1,32 @@
 {
   "_comment": "SOURCE OF TRUTH for the roster. Edit this file to add / remove / reorder clients, then run `node build.js` and refresh. Every field except id, name, and disciplines is optional - leave optional fields as null and they hide cleanly. 'featured: true' surfaces a client in the homepage preview. 'order' controls sort (lower = earlier). See README.md for the full workflow.",
+  "_professions_note": "Master list of professions Middle Rock represents (the 'queue'). Boil each client's disciplines down to these basic ingredients (e.g. 'MG Fantasy Author' -> 'Author', 'Animation Writer' -> 'Screenwriter'). The roster filter shows a profession only while at least one client uses it, and it disappears when the last such client is removed. Add new basics here as the roster grows.",
+  "professions": [
+    "Actor",
+    "Actress",
+    "AD",
+    "Author",
+    "Cinematographer",
+    "Composer",
+    "Director",
+    "Editor",
+    "Filmmaker",
+    "Illustrator",
+    "Photographer",
+    "Playwright",
+    "Producer",
+    "Screenwriter",
+    "Showrunner",
+    "Songwriter",
+    "Voice Actor",
+    "Writer"
+  ],
   "clients": [
     {
       "id": "philip-asta",
       "name": "Philip Asta",
       "disciplines": [
-        "MG Fantasy Author",
+        "Author",
         "Screenwriter"
       ],
       "image": "/assets/images/placeholders/philip-asta.webp",
@@ -42,7 +63,7 @@
       "id": "pam-bassuk",
       "name": "Pam Bassuk",
       "disciplines": [
-        "Animation Writer"
+        "Screenwriter"
       ],
       "image": "/assets/images/placeholders/pam-bassuk.webp",
       "imageAlt": "Portrait of Pam Bassuk",
@@ -116,7 +137,7 @@
       "id": "lindsay-jean-michelle",
       "name": "Lindsay Jean Michelle",
       "disciplines": [
-        "Animation Writer"
+        "Screenwriter"
       ],
       "image": "/assets/images/placeholders/lindsay-jean-michelle.webp",
       "imageAlt": "Portrait of Lindsay Jean Michelle",
@@ -153,7 +174,7 @@
       "id": "tommy-schneiders",
       "name": "Tommy Schneiders",
       "disciplines": [
-        "Animation Writer"
+        "Screenwriter"
       ],
       "image": "/assets/images/placeholders/tommy-schneiders.webp",
       "imageAlt": "Portrait of Tommy Schneiders",

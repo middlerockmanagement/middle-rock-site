@@ -56,38 +56,45 @@ function disciplineText(disciplines) {
 }
 
 /* ----------------------- roster card --------------------------- */
-function rosterCard(c, headingTag) {
-  const h = headingTag || "h3";
+function rosterCard(c) {
+  const pid = "rc-" + attr(c.id);
+  const alt = attr(c.imageAlt || ("Portrait of " + c.name));
   const lines = [];
   lines.push(`        <article class="card" data-disciplines="${attr(disciplineTokens(c.disciplines))}">`);
-  lines.push(`          <div class="card__media">`);
-  lines.push(`            <div class="img-window ratio-4-5 img-mono">`);
-  lines.push(`              <img src="${attr(c.image)}" alt="${attr(c.imageAlt || ("Portrait of " + c.name))}" width="640" height="800" loading="lazy" decoding="async">`);
-  lines.push(`            </div>`);
-  lines.push(`          </div>`);
-  lines.push(`          <${h} class="card__name">${esc(c.name)}</${h}>`);
+  // Summary (thumbnail + name + professions): the accordion tab on mobile;
+  // on desktop the thumbnail/chevron hide and this becomes the card's caption.
+  lines.push(`          <h3 class="card__head">`);
+  lines.push(`            <button class="card__summary" type="button" aria-expanded="true" aria-controls="${pid}">`);
+  lines.push(`              <span class="card__thumb img-mono" aria-hidden="true"><img src="${attr(c.image)}" alt="" width="128" height="160" loading="lazy" decoding="async"></span>`);
+  lines.push(`              <span class="card__id">`);
+  lines.push(`                <span class="card__name">${esc(c.name)}</span>`);
   if (has(c.disciplines && c.disciplines.length)) {
-    lines.push(`          <p class="card__disciplines">${disciplineText(c.disciplines)}</p>`);
+    lines.push(`                <span class="card__disciplines">${disciplineText(c.disciplines)}</span>`);
   }
-  if (has(c.coManagement)) {
-    lines.push(`          <p class="card__note">Co-Manager: ${esc(c.coManagement)}</p>`);
-  }
-  if (has(c.bio)) {
-    lines.push(`          <p class="card__bio">${esc(c.bio)}</p>`);
-  }
+  lines.push(`              </span>`);
+  lines.push(`              <span class="card__chev" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span>`);
+  lines.push(`            </button>`);
+  lines.push(`          </h3>`);
+  // Detail (full portrait + links): collapsed on mobile via main.js; always shown on desktop / without JS.
+  lines.push(`          <div class="card__detail" id="${pid}">`);
+  lines.push(`            <div class="card__media">`);
+  lines.push(`              <div class="img-window ratio-4-5 img-mono">`);
+  lines.push(`                <img src="${attr(c.image)}" alt="${alt}" width="640" height="800" loading="lazy" decoding="async">`);
+  lines.push(`              </div>`);
+  lines.push(`            </div>`);
+  if (has(c.bio)) lines.push(`            <p class="card__bio">${esc(c.bio)}</p>`);
   const links = [];
   if (has(c.primaryUrl)) links.push([c.primaryUrl, c.primaryLabel || "Profile"]);
   if (has(c.secondaryUrl)) links.push([c.secondaryUrl, c.secondaryLabel || "More"]);
   if (links.length) {
-    lines.push(`          <div class="card__links">`);
+    lines.push(`            <div class="card__links">`);
     for (const [url, label] of links) {
-      lines.push(`            <a class="card__link" href="${attr(url)}" target="_blank" rel="noopener noreferrer">${esc(label)} <span class="arrow" aria-hidden="true">&#8599;</span><span class="visually-hidden"> (opens in a new tab)</span></a>`);
+      lines.push(`              <a class="card__link" href="${attr(url)}" target="_blank" rel="noopener noreferrer">${esc(label)} <span class="arrow" aria-hidden="true">&#8599;</span><span class="visually-hidden"> (opens in a new tab)</span></a>`);
     }
-    lines.push(`          </div>`);
+    lines.push(`            </div>`);
   }
-  if (has(c.status)) {
-    lines.push(`          <span class="card__status">${esc(c.status)}</span>`);
-  }
+  if (has(c.status)) lines.push(`            <span class="card__status">${esc(c.status)}</span>`);
+  lines.push(`          </div>`);
   lines.push(`        </article>`);
   return lines.join("\n");
 }
@@ -156,7 +163,7 @@ function filterButtons(clients) {
 /* ------------- home "Selected roster" section (optional) ------- */
 function homeRosterSection(featured) {
   if (!OPTIONS.showHomeRoster) return ""; // toggled off - render nothing
-  const cards = featured.map((c) => rosterCard(c, "h3")).join("\n");
+  const cards = featured.map((c) => rosterCard(c)).join("\n");
   return `    <section class="section container container--wide" aria-labelledby="roster-title">
       <div class="section-head">
         <h2 class="section-head__title" id="roster-title">Selected roster</h2>
@@ -291,12 +298,24 @@ function inject(file, marker, content) {
 
 /* --------------------------- run ------------------------------- */
 function main() {
-  const clients = readJSON("data/clients.json").clients
+  const clientsData = readJSON("data/clients.json");
+  const clients = clientsData.clients
     .slice()
     .sort((a, b) => (a.order || 0) - (b.order || 0));
   const team = readJSON("data/team.json").team
     .slice()
     .sort((a, b) => (a.order || 0) - (b.order || 0));
+
+  // Keep profession labels basic: warn if a client uses one that isn't in the
+  // canonical "professions" list (the queue). Filter options are still derived
+  // from clients, so a profession only appears once someone actually has it.
+  const canon = new Set((clientsData.professions || []).map(slugify));
+  if (canon.size) {
+    for (const c of clients)
+      for (const d of (c.disciplines || []))
+        if (!canon.has(slugify(d)))
+          console.warn(`  ! non-canonical profession "${d}" on ${c.name} — add it to data/clients.json "professions" or boil it down.`);
+  }
 
   const featured = clients.filter((c) => c.featured).slice(0, 6);
 

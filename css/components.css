@@ -312,63 +312,83 @@
   .img-mono > img { transition: none; }
 }
 
-/* ------------------------- Roster cards ------------------------ */
+/* ------------------------- Roster ------------------------------
+   DESKTOP: a grid of vertical cards (portrait, name, professions, links).
+   MOBILE (<=620px): an accordion - thumbnail + name + professions summary
+   that taps open to reveal the full portrait + links. Enhanced by main.js;
+   without JS every card is fully expanded. Mirrors the About team. */
 .roster-grid {
   display: grid;
   gap: clamp(1.5rem, 1rem + 2.5vw, 3rem) clamp(1.25rem, 0.8rem + 2vw, 2.5rem);
   grid-template-columns: repeat(auto-fill, minmax(min(100%, 15.5rem), 1fr));
 }
-/* Phones: two per row (interim) so cards aren't full-screen tall */
-@media (max-width: 560px) {
-  .roster-grid { grid-template-columns: 1fr 1fr; gap: var(--space-l) var(--space-s); }
-  .card__name { font-size: var(--step-0); }
-  .card__disciplines, .card__note, .card__link { font-size: 0.78rem; }
-}
 .card { display: flex; flex-direction: column; }
+.card__head { margin: 0; }
+.card__summary {
+  display: flex; align-items: center; gap: var(--space-s);
+  width: 100%; padding: 0;
+  background: none; border: 0; color: inherit; font: inherit;
+  text-align: left; cursor: pointer;
+}
+.card__thumb {
+  flex: 0 0 auto; width: 60px; height: 75px;
+  overflow: hidden; background: var(--paper-deep);
+}
+.card__thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.card__id { flex: 1 1 auto; min-width: 0; }
+.card__chev {
+  flex: 0 0 auto; display: inline-flex; color: var(--ink-muted);
+  transition: transform var(--dur-fast) var(--ease);
+}
+.card__chev svg { width: 20px; height: 20px; }
+.card.is-open .card__chev { transform: rotate(180deg); }
+
 .card__media { margin-bottom: var(--space-s); }
 .card__name {
-  font-family: var(--font-display);
-  font-size: var(--step-1);
-  color: var(--ink);
-  line-height: 1.1;
+  display: block;
+  font-family: var(--font-display); font-size: var(--step-1);
+  color: var(--ink); line-height: 1.1;
 }
 .card__disciplines {
-  font-size: var(--step--1);
-  color: var(--ink-muted);
-  letter-spacing: 0.02em;
-  margin-top: 0.35rem;
+  display: block;
+  font-size: var(--step--1); color: var(--ink-muted);
+  letter-spacing: 0.02em; margin-top: 0.35rem;
 }
 .card__disciplines .sep { color: var(--ink-faint); padding-inline: 0.15em; }
-.card__note {
-  font-size: var(--step--1);
-  color: var(--ink-faint);
-  font-style: italic;
-  margin-top: 0.35rem;
-}
 .card__bio { font-size: var(--step--1); color: var(--ink-soft); margin-top: 0.6rem; }
-.card__links {
-  display: flex; flex-wrap: wrap; gap: 0.4rem 1.1rem;
-  margin-top: 0.7rem;
-}
+.card__links { display: flex; flex-wrap: wrap; gap: 0.4rem 1.1rem; margin-top: 0.7rem; }
 .card__link {
-  font-size: var(--step--1);
-  letter-spacing: 0.05em;
-  color: var(--ink);
+  font-size: var(--step--1); letter-spacing: 0.05em; color: var(--ink);
   display: inline-flex; align-items: center; gap: 0.35em;
 }
 .card__link .arrow { transition: transform var(--dur-fast) var(--ease); }
 .card__link:hover .arrow, .card__link:focus-visible .arrow { transform: translate(2px, -2px); }
 @media (prefers-reduced-motion: reduce) { .card__link .arrow { transition: none; } }
-
 .card__status {
-  align-self: flex-start;
-  font-size: 0.72rem;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--ink-muted);
-  border: 1px solid var(--rule-strong);
-  padding: 0.2rem 0.55rem;
-  margin-top: 0.7rem;
+  align-self: flex-start; font-size: 0.72rem; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--ink-muted);
+  border: 1px solid var(--rule-strong); padding: 0.2rem 0.55rem; margin-top: 0.7rem;
+}
+
+/* Mobile: single-column accordion list. Collapse only when JS is active. */
+@media (max-width: 620px) {
+  .roster-grid { grid-template-columns: 1fr; gap: 0; }
+  .card { border-top: 1px solid var(--rule); padding-block: var(--space-s); }
+  html.js .card__detail { display: none; }
+  html.js .card.is-open .card__detail { display: block; margin-top: var(--space-s); }
+  html.js .card.is-open .card__thumb { display: none; } /* full portrait takes over */
+  .card__media { max-width: 300px; margin-bottom: 0; }
+}
+
+/* Desktop: full vertical card, no accordion chrome. */
+@media (min-width: 621px) {
+  .card__head, .card__detail { display: contents; }
+  .card__summary { order: 2; display: block; cursor: default; }
+  .card__thumb, .card__chev { display: none; }
+  .card__media { order: 1; }
+  .card__bio { order: 3; }
+  .card__links { order: 4; }
+  .card__status { order: 5; }
 }
 
 /* ----------------------- Discipline filter (dropdown) ---------- */
