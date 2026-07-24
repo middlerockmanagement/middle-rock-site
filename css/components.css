@@ -489,11 +489,15 @@
   .team-member__role { margin-top: 0.5rem; }
 }
 
-/* Two members side by side once there's room. */
+/* Two members side by side once there's room - sized to the content and
+   centred as a pair, so the portraits sit in the middle rather than
+   hugging the left edge. */
 @media (min-width: 760px) {
   .team-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: repeat(2, minmax(0, 25rem));
     column-gap: clamp(2.5rem, 1.5rem + 3vw, 5rem);
+    justify-content: center;
     align-items: start;
   }
+  .team-member__media .img-window { max-width: none; } /* fill the (capped) column */
 }
