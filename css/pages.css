@@ -368,32 +368,8 @@
 .page-header__eyebrow { margin-bottom: var(--space-m); display: inline-block; }
 
 /* --------------------------- Contact page ---------------------- */
-/* Contact uses the same two-tone split as the About hero (.about-hero*).
-   These add the email CTA, social icons, and policy-panel text. */
-.contact__cta { margin: clamp(1.5rem, 1rem + 2vw, 2.5rem) 0 0; }
-.contact__email {
-  display: inline-flex; align-items: baseline; gap: 0.4em;
-  font-family: var(--font-display); font-size: var(--step-3); line-height: 1.1;
-  color: var(--ink); text-decoration: none;
-  border-bottom: 1px solid var(--rule-strong); padding-bottom: 4px;
-  transition: border-color var(--dur-fast) var(--ease);
-}
-.contact__email:hover, .contact__email:focus-visible { border-color: var(--ink); }
-.contact__email-arrow { transition: transform var(--dur-fast) var(--ease); }
-.contact__email:hover .contact__email-arrow,
-.contact__email:focus-visible .contact__email-arrow { transform: translateX(4px); }
-
-.contact__socials {
-  display: flex; align-items: center; gap: 1.15rem;
-  margin-top: clamp(1.5rem, 1rem + 2vw, 2.25rem);
-}
-.contact__socials a { display: inline-flex; color: var(--ink-muted); transition: color var(--dur-fast) var(--ease); }
-.contact__socials a:hover, .contact__socials a:focus-visible { color: var(--ink); }
-.contact__socials svg { width: 24px; height: 24px; }
-
-.contact__policy-title { font-size: var(--step-2); margin-bottom: var(--space-s); color: var(--ink); }
-.contact__policy-strong { color: var(--ink); font-weight: 500; }
-.contact__policy-note { color: var(--ink-soft); margin-top: var(--space-s); }
+/* Contact is a minimal hero (eyebrow + title + copy) reusing the
+   .about-hero title/deck styles; the footer CTA carries the action. */
 
 /* --------------------------- 404 ------------------------------- */
 .error-page {
