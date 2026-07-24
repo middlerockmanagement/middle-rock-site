@@ -456,6 +456,9 @@
 @media (max-width: 620px) {
   html.js .team-member__detail { display: none; }
   html.js .team-member.is-open .team-member__detail { display: block; }
+  /* the thumbnail is the collapsed-state stand-in; once open, the full
+     portrait takes over, so retire the thumbnail. */
+  html.js .team-member.is-open .team-member__thumb { display: none; }
   .team-member + .team-member { border-top: 1px solid var(--rule); padding-top: var(--space-s); }
 }
 
