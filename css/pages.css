@@ -75,12 +75,12 @@
 .about-hero { padding-block: clamp(1.75rem, 1rem + 2.5vw, 3.5rem) clamp(0.75rem, 0.5rem + 1vw, 1.75rem); }
 .about-hero__title {
   font-family: var(--font-display);
-  font-size: clamp(1.9rem, 4.5vw, 3.5rem);
-  line-height: 1.1;
-  letter-spacing: -0.015em;
+  font-size: clamp(1.5rem, 3.2vw, 2.6rem);
+  line-height: 1.15;
+  letter-spacing: -0.01em;
   color: var(--ink);
   margin: 0;
-  max-width: 34ch;   /* left-justified hero statement */
+  max-width: 36ch;   /* left-justified hero statement */
 }
 .about-team { padding-block: clamp(2rem, 1.25rem + 2.5vw, 3.5rem); }
 .about-hero .section-label,
