@@ -533,8 +533,8 @@
     padding-inline-end: clamp(2rem, 4vw, 4rem);
   }
   .team-member__media {
-    border-inline-start: 1px solid var(--rule);   /* the central spine, like the hero */
+    border-inline-start: 1px solid var(--rule-strong);  /* central spine, visible on stone */
     padding-inline-start: clamp(2rem, 1.5rem + 3vw, 4rem);
   }
-  .team-member__media .img-window { max-width: 24rem; }
+  .team-member__media .img-window { max-width: 22rem; }
 }
