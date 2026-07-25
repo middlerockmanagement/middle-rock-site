@@ -75,11 +75,7 @@
    two-column split - the definition on the left (paper), the ethos on
    the right (dark panel), divided by a hairline bar. Stacks on mobile,
    where the dark panel simply sits beneath the definition. */
-/* About page reads as sand, with the "Intentionally boutique" hero as the
-   one light band (header + footer keep their own colours). */
-.about-page { background: var(--panel-soft); }
 .about-hero {
-  background: var(--paper);
   padding-block: clamp(2rem, 1rem + 4vw, 4rem) clamp(1.5rem, 1rem + 2vw, 3rem);
 }
 /* draw the team section up so the hero and roster read as one page */
