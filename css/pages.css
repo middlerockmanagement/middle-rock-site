@@ -87,8 +87,12 @@
 .about-team { padding-block: clamp(2rem, 1.25rem + 2.5vw, 3.75rem); }
 .about-hero .section-label,
 .about-team .section-label { margin-bottom: clamp(1rem, 0.6rem + 1.5vw, 2rem); }
-/* Team label sits quietly, no underline. */
-.about-team .section-label { border-bottom: 0; }
+/* Philosophy panel: stack the statement over its supporting line. */
+@media (min-width: 860px) {
+  .about-philosophy .statement__grid { grid-template-columns: 1fr; gap: var(--space-l); }
+  .about-philosophy .statement__lead { max-width: 30ch; }
+  .about-philosophy .statement__body { padding-left: 0; border-left: 0; max-width: 60ch; }
+}
 
 /* ------------------- Statement panel (home "What we do") --------
    A full-bleed dark editorial band: the deliberate contrast moment
