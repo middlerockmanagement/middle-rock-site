@@ -389,6 +389,12 @@
   .card__bio { order: 3; }
   .card__links { order: 4; }
   .card__status { order: 5; }
+
+  /* Colourise the portrait whenever the cursor is anywhere over the card -
+     the image, name, professions, or the link below - so it holds while you
+     move down to click. Middle Rocks roster only. */
+  .roster-grid .card:hover .img-mono > img,
+  .roster-grid .card:focus-within .img-mono > img { filter: grayscale(0%); }
 }
 
 /* ----------------------- Discipline filter (dropdown) ---------- */
