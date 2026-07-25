@@ -101,15 +101,33 @@ function rosterCard(c) {
 
 /* ----------------------- team member --------------------------- */
 function teamMember(m) {
+  const pid = "tm-" + attr(m.id);
   const alt = attr(m.imageAlt || ("Portrait of " + m.name));
   const lines = [];
-  lines.push(`        <article class="team-member" id="${attr(m.id)}">`);
-  lines.push(`          <div class="team-member__thumb img-mono">`);
-  lines.push(`            <img src="${attr(m.image)}" alt="${alt}" width="600" height="800" loading="lazy" decoding="async">`);
+  lines.push(`        <article class="team-member" id="${attr(m.id)}" data-team-member>`);
+  // Summary (thumbnail + name/role): the accordion tab on mobile; on desktop the
+  // thumbnail/chevron hide and the name/role sit under the square photo.
+  lines.push(`          <h3 class="team-member__head">`);
+  lines.push(`            <button class="team-member__summary" type="button" aria-expanded="true" aria-controls="${pid}">`);
+  lines.push(`              <span class="team-member__thumb img-mono" aria-hidden="true"><img src="${attr(m.image)}" alt="" width="220" height="275" loading="lazy" decoding="async"></span>`);
+  lines.push(`              <span class="team-member__id">`);
+  lines.push(`                <span class="team-member__name">${esc(m.name)}</span>`);
+  if (has(m.role)) lines.push(`                <span class="team-member__role">${esc(m.role)}</span>`);
+  lines.push(`              </span>`);
+  lines.push(`              <span class="team-member__chev" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span>`);
+  lines.push(`            </button>`);
+  lines.push(`          </h3>`);
+  // Detail (photo + bio): collapsed on mobile via main.js; always shown on desktop / without JS.
+  lines.push(`          <div class="team-member__detail" id="${pid}">`);
+  lines.push(`            <div class="team-member__media">`);
+  lines.push(`              <div class="img-window img-mono">`);
+  lines.push(`                <img src="${attr(m.image)}" alt="${alt}" width="600" height="800" loading="lazy" decoding="async">`);
+  lines.push(`              </div>`);
+  lines.push(`            </div>`);
+  lines.push(`            <div class="team-member__copy">`);
+  if (has(m.bio)) lines.push(`              <p class="team-member__bio">${esc(m.bio)}</p>`);
+  lines.push(`            </div>`);
   lines.push(`          </div>`);
-  lines.push(`          <h3 class="team-member__name">${esc(m.name)}</h3>`);
-  if (has(m.role)) lines.push(`          <p class="team-member__role">${esc(m.role)}</p>`);
-  if (has(m.bio)) lines.push(`          <p class="team-member__bio">${esc(m.bio)}</p>`);
   lines.push(`        </article>`);
   return lines.join("\n");
 }

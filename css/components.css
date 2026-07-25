@@ -433,33 +433,79 @@
 .roster-filter__select:focus-visible { outline: var(--focus); outline-offset: 2px; }
 
 /* --------------------------- Team ------------------------------
-   Two square portraits side by side; name, role, and bio permanently
-   shown beneath each. */
-.team-grid { display: grid; gap: clamp(2rem, 1rem + 3vw, 3.5rem); }
+   DESKTOP (>=600px): two square photo cards side by side - photo, name,
+   role, and bio all shown. MOBILE (<600px): an accordion - thumbnail +
+   name/role that taps open to reveal the photo + bio. main.js drives it;
+   without JS everything shows. */
+.team-grid { display: grid; gap: 0; }
+
+.team-member { border-top: 1px solid var(--rule-strong); }
+.team-member:first-child { border-top: 0; }
+.team-member__head { margin: 0; }
+.team-member__summary {
+  display: flex; align-items: center; gap: var(--space-m);
+  width: 100%; padding: var(--space-s) 0;
+  background: none; border: 0; color: inherit; font: inherit;
+  text-align: left; cursor: pointer;
+}
+.team-member__thumb {
+  flex: 0 0 auto; width: clamp(84px, 20vw, 110px); aspect-ratio: 4 / 5;
+  overflow: hidden; background: var(--paper-deep);
+}
+.team-member__thumb img { width: 100%; height: 100%; object-fit: cover; object-position: center 20%; display: block; }
+.team-member__id { flex: 1 1 auto; min-width: 0; }
+.team-member__name {
+  display: block;
+  font-family: var(--font-display); font-size: var(--step-2);
+  line-height: 1.12; color: var(--ink);
+}
+.team-member__role {
+  display: block; margin-top: 0.4rem;
+  font-family: var(--font-sans); font-size: var(--step--1);
+  letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-muted);
+}
+.team-member__chev {
+  flex: 0 0 auto; display: inline-flex; color: var(--ink-muted);
+  transition: transform var(--dur-fast) var(--ease);
+}
+.team-member__chev svg { width: 24px; height: 24px; }
+.team-member.is-open .team-member__chev { transform: rotate(180deg); }
+
+.team-member__media .img-window { aspect-ratio: 4 / 5; }
+.team-member__media .img-window img { object-position: center 20%; }
+.team-member__bio { margin-top: var(--space-m); max-width: 60ch; color: var(--ink-soft); }
+#corrine-ashley .team-member__thumb img,
+#corrine-ashley .team-member__media .img-window img { object-position: center top; }
+
+/* Mobile: accordion. Collapse the detail when JS is active; thumbnail hides on open. */
+@media (max-width: 599px) {
+  html.js .team-member__detail { display: none; }
+  html.js .team-member.is-open .team-member__detail { display: block; margin-top: var(--space-m); }
+  html.js .team-member.is-open .team-member__thumb { display: none; }
+  .team-member__media .img-window { max-width: 320px; }
+}
+
+/* Desktop: two square cards side by side, everything shown (no accordion). */
 @media (min-width: 600px) {
   .team-grid {
     grid-template-columns: 1fr 1fr;
     gap: clamp(1.75rem, 1rem + 3vw, 4rem);
     align-items: start;
   }
+  .team-member {
+    border-top: 0;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-areas: "media" "id" "copy";
+    row-gap: var(--space-m);
+  }
+  .team-member__head,
+  .team-member__detail { display: contents; }
+  .team-member__summary { grid-area: id; padding: 0; gap: 0; cursor: default; display: block; }
+  .team-member__thumb,
+  .team-member__chev { display: none; }
+  .team-member__media { grid-area: media; }
+  .team-member__media .img-window { aspect-ratio: 1 / 1; }   /* square on desktop */
+  .team-member__copy { grid-area: copy; }
+  .team-member__bio { margin-top: 0; }
 }
-.team-member__thumb {
-  width: 100%; aspect-ratio: 1 / 1;   /* square */
-  overflow: hidden; background: var(--paper-deep);
-  margin-bottom: var(--space-m);
-}
-.team-member__thumb img {
-  width: 100%; height: 100%; object-fit: cover; display: block;
-  object-position: center 20%;   /* keep faces in frame */
-}
-#corrine-ashley .team-member__thumb img { object-position: center top; }
-.team-member__name {
-  font-family: var(--font-display); font-size: var(--step-2);
-  line-height: 1.12; color: var(--ink);
-}
-.team-member__role {
-  margin-top: 0.4rem;
-  font-family: var(--font-sans); font-size: var(--step--1);
-  letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-muted);
-}
-.team-member__bio { margin-top: var(--space-m); max-width: 60ch; color: var(--ink-soft); }
