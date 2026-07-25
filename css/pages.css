@@ -75,11 +75,17 @@
    two-column split - the definition on the left (paper), the ethos on
    the right (dark panel), divided by a hairline bar. Stacks on mobile,
    where the dark panel simply sits beneath the definition. */
+/* The page reads as sand; the "Intentionally boutique" hero is a lighter
+   paper card floating on it. Header + footer keep their own colours. */
+.about-page { background: var(--panel-soft); }
 .about-hero {
-  padding-block: clamp(2rem, 1rem + 4vw, 4rem) clamp(1.5rem, 1rem + 2vw, 3rem);
+  padding-block: clamp(1.75rem, 1rem + 3vw, 3.5rem);
 }
-/* draw the team section up so the hero and roster read as one page */
-.about-hero + .section { padding-top: clamp(2rem, 1rem + 3vw, 4rem); }
+.about-hero__card {
+  background: var(--paper);
+  padding: clamp(1.75rem, 1.25rem + 3.5vw, 3.75rem);
+}
+.about-hero + .section { padding-top: clamp(1.5rem, 0.75rem + 2vw, 3rem); }
 .about-hero__split { display: grid; gap: var(--space-l); }
 
 .about-hero__title {
@@ -98,20 +104,7 @@
   margin: var(--space-m) 0 0;
 }
 
-.about-hero__aside {
-  background: var(--panel-soft);
-  color: var(--ink-soft);
-  padding: clamp(1.75rem, 1.25rem + 3vw, 3rem);
-}
-/* Mobile: let the panel bleed to the page edges with the gutter as its
-   inner padding, so its text lines up vertically with the title/deck above
-   (no boxed border offsetting the alignment). */
-@media (max-width: 819px) {
-  .about-hero__aside {
-    margin-inline: calc(-1 * var(--gutter));
-    padding-inline: var(--gutter);
-  }
-}
+.about-hero__aside { color: var(--ink-soft); }
 .about-hero__statement {
   font-family: var(--font-display);
   font-size: var(--step-3);
@@ -145,7 +138,7 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding: clamp(2rem, 1.5rem + 2.5vw, 3.5rem);
+    padding-inline-start: clamp(2rem, 4vw, 4rem);
   }
 }
 
