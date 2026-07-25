@@ -98,13 +98,8 @@
   font-size: clamp(1.75rem, 5.5vw, 4.5rem);   /* scales with the screen, spans the width */
   line-height: 1.1;
 }
-.about-philosophy .statement__body {
-  max-width: none;
-  font-size: clamp(1.05rem, 1.7vw, 1.5rem);
-}
 @media (min-width: 860px) {
   .about-philosophy .statement__grid { grid-template-columns: 1fr; }
-  .about-philosophy .statement__body { padding-left: 0; border-left: 0; }
 }
 
 /* ------------------- Statement panel (home "What we do") --------
