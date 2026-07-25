@@ -73,7 +73,8 @@
 /* ========================= About page ===========================
    Editorial masthead (title + deck), then a full-bleed dark manifesto
    panel reusing the homepage "What we do" band, then the team. */
-.about-hero { padding-block: clamp(2.5rem, 1.5rem + 5vw, 6.5rem) clamp(1.25rem, 0.5rem + 2vw, 2.5rem); }
+/* Tightened vertical rhythm so the bands sit close together. */
+.about-hero { padding-block: clamp(1.75rem, 1rem + 2.5vw, 3.5rem) clamp(1rem, 0.5rem + 1.5vw, 2rem); }
 .about-hero__title {
   font-family: var(--font-display);
   font-size: clamp(2.6rem, 10vw, 8rem);   /* spans the full width like a headline */
@@ -82,6 +83,10 @@
   color: var(--ink);
   margin: 0;
 }
+.about-philosophy { padding-block: clamp(2.5rem, 1.5rem + 3.5vw, 4.5rem); }
+.about-team { padding-block: clamp(2rem, 1.25rem + 2.5vw, 3.75rem); }
+.about-hero .section-label,
+.about-team .section-label { margin-bottom: clamp(1rem, 0.6rem + 1.5vw, 2rem); }
 /* Team label sits quietly, no underline. */
 .about-team .section-label { border-bottom: 0; }
 

@@ -443,7 +443,7 @@
 .team-member__head { margin: 0; }
 .team-member__summary {
   display: flex; align-items: center; gap: clamp(var(--space-m), 3vw, var(--space-l));
-  width: 100%; padding: clamp(1rem, 0.6rem + 1.6vw, 2rem) 0;
+  width: 100%; padding: clamp(0.85rem, 0.5rem + 1.2vw, 1.5rem) 0;
   background: none; border: 0; color: inherit;
   font: inherit; text-align: left; cursor: pointer;
 }
