@@ -433,70 +433,60 @@
 .roster-filter__select:focus-visible { outline: var(--focus); outline-offset: 2px; }
 
 /* --------------------------- Team ------------------------------
-   An accordion at every width: a portrait thumbnail + name/role summary
-   that taps open to reveal the full portrait + bio. Thumbnails scale up on
-   desktop. Enhanced by main.js; without JS every member stays expanded. */
-.team-grid { display: grid; gap: 0; }
+   Two square portraits side by side; name + role beneath each, with an
+   arrow that opens the bio. Enhanced by main.js; without JS every bio shows. */
+.team-grid { display: grid; gap: clamp(2rem, 1rem + 3vw, 3.5rem); }
+@media (min-width: 600px) {
+  .team-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(1.75rem, 1rem + 3vw, 4rem);
+    align-items: start;
+  }
+}
 
-.team-member { border-top: 1px solid var(--rule-strong); }
-.team-member:first-child { border-top: 0; }
 .team-member__head { margin: 0; }
 .team-member__summary {
-  display: flex; align-items: center; gap: clamp(var(--space-m), 3vw, var(--space-l));
-  width: 100%; padding: clamp(0.85rem, 0.5rem + 1.2vw, 1.5rem) 0;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  grid-template-areas: "photo photo" "name chev";
+  column-gap: var(--space-m);
+  row-gap: var(--space-m);
+  align-items: center;
+  width: 100%; padding: 0;
   background: none; border: 0; color: inherit;
   font: inherit; text-align: left; cursor: pointer;
 }
 .team-member__thumb {
-  flex: 0 0 auto;
-  width: clamp(96px, 15vw, 210px); aspect-ratio: 4 / 5;
+  grid-area: photo;
+  width: 100%; aspect-ratio: 1 / 1;   /* square */
   overflow: hidden; background: var(--paper-deep);
 }
-.team-member__thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
-/* Desktop: much larger portrait thumbnails. */
-@media (min-width: 1000px) {
-  .team-member__thumb { width: clamp(240px, 22vw, 340px); }
+.team-member__thumb img {
+  width: 100%; height: 100%; object-fit: cover; display: block;
+  object-position: center 20%;   /* keep faces in frame */
 }
-.team-member__id { flex: 1 1 auto; min-width: 0; }
+.team-member__id { grid-area: name; min-width: 0; }
 .team-member__name {
   display: block;
-  font-family: var(--font-display); font-size: clamp(var(--step-1), 1.5vw, var(--step-2));
-  line-height: 1.1; color: var(--ink);
+  font-family: var(--font-display); font-size: var(--step-2);
+  line-height: 1.12; color: var(--ink);
 }
 .team-member__role {
-  display: block; margin-top: 0.5rem;
+  display: block; margin-top: 0.4rem;
   font-family: var(--font-sans); font-size: var(--step--1);
-  letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink-muted);
+  letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-muted);
 }
 .team-member__chev {
-  flex: 0 0 auto; display: inline-flex; color: var(--ink-muted);
+  grid-area: chev; align-self: center;
+  display: inline-flex; color: var(--ink-muted);
   transition: transform var(--dur-fast) var(--ease);
 }
-.team-member__chev svg { width: clamp(22px, 2.4vw, 28px); height: clamp(22px, 2.4vw, 28px); }
+.team-member__chev svg { width: 26px; height: 26px; }
 .team-member.is-open .team-member__chev { transform: rotate(180deg); }
 
-.team-member__media { position: relative; }
-.team-member__media .img-window { max-width: 22rem; }
-.team-member__credit {
-  font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase;
-  color: var(--ink-faint); margin-top: 0.5rem;
-}
-.team-member__bio { margin-top: var(--space-m); max-width: 60ch; color: var(--ink-soft); }
+.team-member__media { display: none; }        /* the square thumbnail is the photo */
+.team-member__bio { max-width: 60ch; color: var(--ink-soft); }
 
-/* Collapse when JS is active (all widths); without JS everything shows.
-   Once open, the full portrait takes over from the thumbnail. */
+/* The arrow opens the bio; collapsed until then when JS is active. */
 html.js .team-member__detail { display: none; }
-html.js .team-member.is-open .team-member__detail { display: block; margin-top: var(--space-m); padding-bottom: var(--space-l); }
-html.js .team-member.is-open .team-member__thumb { display: none; }
-
-/* Expanded view on wider screens: full portrait beside the bio. */
-@media (min-width: 700px) {
-  html.js .team-member.is-open .team-member__detail {
-    display: grid;
-    grid-template-columns: minmax(0, 22rem) 1fr;
-    column-gap: clamp(2rem, 4vw, 4rem);
-    align-items: start;
-  }
-  .team-member.is-open .team-member__media .img-window { max-width: none; }
-  .team-member.is-open .team-member__bio { margin-top: 0; }
-}
+html.js .team-member.is-open .team-member__detail { display: block; margin-top: var(--space-m); }
