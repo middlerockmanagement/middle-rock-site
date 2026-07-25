@@ -180,7 +180,7 @@
   position: relative;
   background: var(--panel-dark);
   color: var(--ink-invert);
-  padding-block: clamp(3.5rem, 2.5rem + 5vw, 7rem) var(--space-l);
+  padding-block: clamp(2rem, 1.25rem + 2.5vw, 3.75rem) var(--space-l);
 }
 .site-footer a { color: var(--ink-invert); }
 
