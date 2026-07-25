@@ -141,7 +141,7 @@ ul[role="list"], ol[role="list"] { list-style: none; padding: 0; }
 .section--tight { padding-block: clamp(2.5rem, 1.5rem + 4vw, 4.5rem); }
 .section--tint { background: var(--paper-deep); }
 .section--stone { background: var(--panel-soft); }
-.section--stone .section-label { border-bottom: 0; }
+.section--stone .section-label { border-bottom-color: var(--rule-strong); }
 .section--dark {
   background: var(--panel-dark);
   color: var(--ink-invert);
