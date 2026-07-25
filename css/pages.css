@@ -75,15 +75,18 @@
    two-column split - the definition on the left (paper), the ethos on
    the right (dark panel), divided by a hairline bar. Stacks on mobile,
    where the dark panel simply sits beneath the definition. */
-/* The page reads as sand; the "Intentionally boutique" hero is a lighter
-   paper card floating on it. Header + footer keep their own colours. */
+/* The page reads as sand. Only the "Intentionally boutique" block (the
+   left column) is a lighter paper card - the eyebrow, its bar, and the
+   "Being boutique" statement all sit on the sand. Header + footer keep
+   their own colours. */
 .about-page { background: var(--panel-soft); }
 .about-hero {
   padding-block: clamp(1.75rem, 1rem + 3vw, 3.5rem);
 }
-.about-hero__card {
+.about-hero .section-label { border-bottom-color: var(--rule-strong); } /* bar reads on sand */
+.about-hero__lead {
   background: var(--paper);
-  padding: clamp(1.75rem, 1.25rem + 3.5vw, 3.75rem);
+  padding: clamp(1.5rem, 1rem + 3vw, 3rem);
 }
 .about-hero + .section { padding-top: clamp(1.5rem, 0.75rem + 2vw, 3rem); }
 .about-hero__split { display: grid; gap: var(--space-l); }
@@ -126,20 +129,10 @@
 @media (min-width: 820px) {
   .about-hero__split {
     grid-template-columns: 1fr 1fr;
-    column-gap: clamp(2rem, 4vw, 4rem);
-    align-items: stretch;
+    column-gap: clamp(2.5rem, 5vw, 5rem);
+    align-items: start;
   }
-  .about-hero__lead {
-    align-self: center;                 /* centre the definition against the panel */
-    padding-right: clamp(2rem, 4vw, 4rem);
-    border-right: 1px solid var(--rule);  /* the bar between the columns */
-  }
-  .about-hero__aside {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding-inline-start: clamp(2rem, 4vw, 4rem);
-  }
+  .about-hero__aside { align-self: center; }  /* centre statement against the card */
 }
 
 /* ------------------- Statement panel (home "What we do") --------
