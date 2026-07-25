@@ -84,22 +84,19 @@
   margin: 0;
   text-align: center;
 }
-.about-philosophy { padding-block: clamp(2.5rem, 1.5rem + 3.5vw, 4.5rem); }
+.about-philosophy { padding-block: clamp(2.25rem, 1.5rem + 2.5vw, 3.75rem); }
 .about-team { padding-block: clamp(2rem, 1.25rem + 2.5vw, 3.75rem); }
 .about-hero .section-label,
 .about-team .section-label { margin-bottom: clamp(1rem, 0.6rem + 1.5vw, 2rem); }
-/* Philosophy panel: a centred manifesto - statement stacked over its
-   supporting line, both centred. */
-.about-philosophy .statement__grid {
-  justify-items: center; text-align: center; gap: var(--space-m);
-}
-.about-philosophy .statement__lead {
-  max-width: none;
-  font-size: clamp(1.75rem, 5.5vw, 4.5rem);   /* scales with the screen, spans the width */
-  line-height: 1.1;
-}
-@media (min-width: 860px) {
-  .about-philosophy .statement__grid { grid-template-columns: 1fr; }
+/* Philosophy panel: one simple centred line on the dark band. */
+.about-philosophy__text {
+  text-align: center;
+  font-family: var(--font-display);
+  font-size: clamp(1.3rem, 2.6vw, 2.1rem);
+  line-height: 1.4;
+  color: var(--ink-invert);
+  max-width: 46ch;
+  margin: 0 auto;
 }
 
 /* ------------------- Statement panel (home "What we do") --------
