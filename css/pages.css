@@ -74,31 +74,13 @@
    Editorial masthead (title + deck), then a full-bleed dark manifesto
    panel reusing the homepage "What we do" band, then the team. */
 .about-hero { padding-block: clamp(2.5rem, 1.5rem + 5vw, 6.5rem); }
-.about-hero__grid { display: grid; gap: var(--space-l); }
 .about-hero__title {
   font-family: var(--font-display);
-  font-size: var(--step-6);
+  font-size: clamp(2.6rem, 10vw, 8rem);   /* spans the full width like a headline */
   line-height: 0.95;
   letter-spacing: -0.02em;
   color: var(--ink);
   margin: 0;
-  max-width: 12ch;
-}
-.about-hero__deck {
-  font-family: var(--font-display);
-  font-size: var(--step-2);
-  line-height: 1.35;
-  color: var(--ink-soft);
-  max-width: 40ch;
-  margin: 0;
-}
-@media (min-width: 860px) {
-  .about-hero__grid {
-    grid-template-columns: 1.15fr 1fr;
-    column-gap: clamp(2.5rem, 5vw, 5.5rem);
-    align-items: end;
-  }
-  .about-hero__deck { padding-bottom: 0.5rem; }
 }
 /* Team label sits quietly, no underline. */
 .about-team .section-label { border-bottom: 0; }
