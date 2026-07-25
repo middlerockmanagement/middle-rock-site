@@ -83,7 +83,6 @@
 .about-hero {
   padding-block: clamp(1.75rem, 1rem + 3vw, 3.5rem);
 }
-.about-hero .section-label { border-bottom-color: var(--rule-strong); } /* bar reads on sand */
 .about-hero__lead {
   background: var(--paper);
   padding: clamp(1.5rem, 1rem + 3vw, 3rem);
