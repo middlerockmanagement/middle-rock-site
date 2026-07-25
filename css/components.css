@@ -488,53 +488,34 @@
   .team-member + .team-member { border-top: 1px solid var(--rule); padding-top: var(--space-s); }
 }
 
-/* Desktop: full cards, no accordion chrome. Each member is a vertical
-   card - portrait, then name/role, then bio - so the two sit cleanly
-   side by side (2-up) on wider screens. */
+/* Desktop: compact profiles - a small portrait beside name/role/bio, the
+   mobile treatment scaled up. Members are stacked rows divided by hairlines
+   on the stone band. No accordion (everything shown). */
 @media (min-width: 621px) {
+  .team-grid { gap: 0; }
   .team-member {
     display: grid;
-    grid-template-columns: 1fr;
-    grid-template-areas: "media" "head" "copy";
-    row-gap: var(--space-m);
+    grid-template-columns: auto minmax(0, 1fr);
+    grid-template-rows: auto 1fr;
+    grid-template-areas: "media head" "media copy";
+    column-gap: clamp(1.25rem, 0.5rem + 2vw, 2.25rem);
     align-items: start;
+    padding-block: clamp(1.75rem, 1rem + 2.5vw, 3rem);
   }
-  /* Flatten the h3 + detail wrappers so their contents drop onto the card
-     grid. The <button> keeps its box (display:contents is ignored on
-     buttons) and simply sits in the "head" cell, styled as plain text. */
+  .team-member:first-child { padding-top: 0; }
+  .team-member + .team-member { border-top: 1px solid var(--rule-strong); }
+  /* Flatten the h3 + detail wrappers onto the row grid; the <button> keeps
+     its box (display:contents is ignored on buttons) and sits in "head". */
   .team-member__head,
   .team-member__detail { display: contents; }
   .team-member__summary { grid-area: head; padding: 0; gap: 0; cursor: default; }
   .team-member__thumb,
-  .team-member__chev { display: none; }
-  .team-member__media { grid-area: media; }
-  .team-member__media .img-window { max-width: 360px; }
-  .team-member__copy { grid-area: copy; }
-  .team-member__bio { margin-top: 0; max-width: 44ch; }
-  .team-member__name { font-size: var(--step-3); line-height: 1.05; }
-  .team-member__role { margin-top: 0.5rem; }
-}
-
-/* Wide screens: echo the hero's two-column grammar so the page reads as
-   one spine - name + bio on the left, portrait on the right, split by the
-   same central hairline. Same orientation for both members (not zig-zag). */
-@media (min-width: 760px) {
-  .team-grid { gap: clamp(3.5rem, 2.5rem + 4vw, 6.5rem); }
-  .team-member {
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: auto 1fr;
-    grid-template-areas: "head media" "copy media";
-    column-gap: 0;
-    align-items: start;
-  }
-  .team-member__summary { padding-inline-end: clamp(2rem, 4vw, 4rem); }
-  .team-member__copy {
-    align-self: start; max-width: 46ch;
-    padding-inline-end: clamp(2rem, 4vw, 4rem);
-  }
-  .team-member__media {
-    border-inline-start: 1px solid var(--rule-strong);  /* central spine, visible on stone */
-    padding-inline-start: clamp(2rem, 1.5rem + 3vw, 4rem);
-  }
-  .team-member__media .img-window { max-width: 22rem; }
+  .team-member__chev { display: none; }        /* accordion chrome off */
+  .team-member__credit { display: none; }       /* no room under a small portrait */
+  .team-member__media { grid-area: media; align-self: start; }
+  .team-member__media .img-window { width: clamp(96px, 9vw, 132px); max-width: none; }
+  .team-member__copy { grid-area: copy; align-self: start; }
+  .team-member__bio { margin-top: var(--space-s); max-width: 64ch; }
+  .team-member__name { font-size: var(--step-2); }
+  .team-member__role { margin-top: 0.4rem; }
 }
