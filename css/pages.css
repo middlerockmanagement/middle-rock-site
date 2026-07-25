@@ -70,69 +70,38 @@
    Distinct from the hero: a labelled, larger editorial lead so the
    second screen doesn't echo the first. */
 .intro__label { margin-bottom: var(--space-m); }
-/* ===================== About hero (two-tone editorial split) =====
-   Matches the homepage language: a section-label eyebrow, then a
-   two-column split - the definition on the left (paper), the ethos on
-   the right (dark panel), divided by a hairline bar. Stacks on mobile,
-   where the dark panel simply sits beneath the definition. */
-/* The page reads as sand. Only the "Intentionally boutique" block (the
-   left column) is a lighter paper card - the eyebrow, its bar, and the
-   "Being boutique" statement all sit on the sand. Header + footer keep
-   their own colours. */
-.about-page { background: var(--panel-soft); }
-.about-hero {
-  padding-block: clamp(1.75rem, 1rem + 3vw, 3.5rem);
-}
-.about-hero__lead {
-  background: var(--paper);
-  padding: clamp(1.5rem, 1rem + 3vw, 3rem);
-}
-.about-hero + .section { padding-top: clamp(1.5rem, 0.75rem + 2vw, 3rem); }
-.about-hero__split { display: grid; gap: var(--space-l); }
-
+/* ========================= About page ===========================
+   Editorial masthead (title + deck), then a full-bleed dark manifesto
+   panel reusing the homepage "What we do" band, then the team. */
+.about-hero { padding-block: clamp(2.5rem, 1.5rem + 5vw, 6.5rem); }
+.about-hero__grid { display: grid; gap: var(--space-l); }
 .about-hero__title {
-  font-size: var(--step-5);
-  line-height: 0.98;
-  letter-spacing: -0.015em;
+  font-family: var(--font-display);
+  font-size: var(--step-6);
+  line-height: 0.95;
+  letter-spacing: -0.02em;
+  color: var(--ink);
   margin: 0;
-  max-width: 14ch;
+  max-width: 12ch;
 }
 .about-hero__deck {
   font-family: var(--font-display);
   font-size: var(--step-2);
-  line-height: 1.3;
+  line-height: 1.35;
   color: var(--ink-soft);
-  max-width: 34ch;
-  margin: var(--space-m) 0 0;
-}
-
-.about-hero__aside { color: var(--ink-soft); }
-.about-hero__statement {
-  font-family: var(--font-display);
-  font-size: var(--step-3);
-  line-height: 1.16;
-  letter-spacing: -0.01em;
-  color: var(--ink);
-  max-width: 24ch;
+  max-width: 40ch;
   margin: 0;
 }
-.about-hero__body {
-  font-size: var(--step-1);
-  line-height: 1.55;
-  color: var(--ink-soft);
-  max-width: 52ch;
-  margin: var(--space-m) 0 0;
-}
-.about-hero__body p + p { margin-top: var(--space-m); }
-
-@media (min-width: 820px) {
-  .about-hero__split {
-    grid-template-columns: 1fr 1fr;
-    column-gap: clamp(2.5rem, 5vw, 5rem);
-    align-items: start;
+@media (min-width: 860px) {
+  .about-hero__grid {
+    grid-template-columns: 1.15fr 1fr;
+    column-gap: clamp(2.5rem, 5vw, 5.5rem);
+    align-items: end;
   }
-  .about-hero__aside { align-self: center; }  /* centre statement against the card */
+  .about-hero__deck { padding-bottom: 0.5rem; }
 }
+/* Team label sits quietly, no underline. */
+.about-team .section-label { border-bottom: 0; }
 
 /* ------------------- Statement panel (home "What we do") --------
    A full-bleed dark editorial band: the deliberate contrast moment
