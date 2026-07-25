@@ -71,33 +71,20 @@
    second screen doesn't echo the first. */
 .intro__label { margin-bottom: var(--space-m); }
 /* ========================= About page ===========================
-   Editorial masthead (title + deck), then a full-bleed dark manifesto
-   panel reusing the homepage "What we do" band, then the team. */
-/* Tightened vertical rhythm so the bands sit close together. */
+   A left-justified hero statement, then the team. */
 .about-hero { padding-block: clamp(1.75rem, 1rem + 2.5vw, 3.5rem) clamp(2rem, 1.25rem + 3vw, 4rem); }
 .about-hero__title {
   font-family: var(--font-display);
-  font-size: clamp(2.6rem, 10vw, 8rem);   /* spans the full width like a headline */
-  line-height: 0.95;
-  letter-spacing: -0.02em;
+  font-size: clamp(1.9rem, 4.5vw, 3.5rem);
+  line-height: 1.1;
+  letter-spacing: -0.015em;
   color: var(--ink);
   margin: 0;
-  text-align: center;
+  max-width: 34ch;   /* left-justified hero statement */
 }
-.about-philosophy { padding-block: clamp(2.25rem, 1.5rem + 2.5vw, 3.75rem); }
 .about-team { padding-block: clamp(2rem, 1.25rem + 2.5vw, 3.75rem); }
 .about-hero .section-label,
 .about-team .section-label { margin-bottom: clamp(1rem, 0.6rem + 1.5vw, 2rem); }
-/* Philosophy panel: one simple centred line on the dark band. */
-.about-philosophy__text {
-  text-align: center;
-  font-family: var(--font-display);
-  font-size: clamp(1.3rem, 2.6vw, 2.1rem);
-  line-height: 1.4;
-  color: var(--ink-invert);
-  max-width: 46ch;
-  margin: 0 auto;
-}
 
 /* ------------------- Statement panel (home "What we do") --------
    A full-bleed dark editorial band: the deliberate contrast moment
