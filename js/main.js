@@ -162,10 +162,9 @@
     rosterMobile.addEventListener("change", syncRC);
   }
 
-  /* -------- Team: accordion on mobile, full cards on desktop -------- */
+  /* -------- Team: accordion at every width (big thumbnails on desktop) -------- */
   var team = Array.prototype.slice.call(document.querySelectorAll("[data-team-member]"));
   if (team.length) {
-    var teamMobile = window.matchMedia("(max-width: 620px)");
     var setTM = function (item, open) {
       item.classList.toggle("is-open", open);
       var b = item.querySelector(".team-member__summary");
@@ -175,16 +174,10 @@
       var btn = item.querySelector(".team-member__summary");
       if (!btn) return;
       btn.addEventListener("click", function () {
-        if (!teamMobile.matches) return; // desktop isn't an accordion
         setTM(item, !item.classList.contains("is-open"));
       });
+      setTM(item, false); // start collapsed
     });
-    var syncTM = function () {
-      // Mobile: collapse all (tap to open). Desktop: everything shown.
-      team.forEach(function (it) { setTM(it, !teamMobile.matches); });
-    };
-    syncTM();
-    teamMobile.addEventListener("change", syncTM);
   }
 
   /* ---------------- Back-to-top button ---------------- */

@@ -433,32 +433,34 @@
 .roster-filter__select:focus-visible { outline: var(--focus); outline-offset: 2px; }
 
 /* --------------------------- Team ------------------------------
-   DESKTOP: portrait beside the bio (full card, always shown).
-   MOBILE (<=620px): an accordion - a thumbnail + name/role summary
-   that taps open to reveal the full portrait + bio. Enhanced by
-   main.js; without JS every member stays fully expanded. */
-.team-grid { display: grid; gap: clamp(2rem, 1.5rem + 3vw, 4rem); }
+   An accordion at every width: a portrait thumbnail + name/role summary
+   that taps open to reveal the full portrait + bio. Thumbnails scale up on
+   desktop. Enhanced by main.js; without JS every member stays expanded. */
+.team-grid { display: grid; gap: 0; }
 
+.team-member { border-top: 1px solid var(--rule-strong); }
+.team-member:first-child { border-top: 0; }
 .team-member__head { margin: 0; }
 .team-member__summary {
-  display: flex; align-items: center; gap: var(--space-m);
-  width: 100%; padding: var(--space-s) 0;
+  display: flex; align-items: center; gap: clamp(var(--space-m), 3vw, var(--space-l));
+  width: 100%; padding: clamp(1rem, 0.6rem + 1.6vw, 2rem) 0;
   background: none; border: 0; color: inherit;
   font: inherit; text-align: left; cursor: pointer;
 }
 .team-member__thumb {
-  flex: 0 0 auto; width: 68px; height: 86px;
+  flex: 0 0 auto;
+  width: clamp(72px, 12vw, 156px); aspect-ratio: 4 / 5;
   overflow: hidden; background: var(--paper-deep);
 }
 .team-member__thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
 .team-member__id { flex: 1 1 auto; min-width: 0; }
 .team-member__name {
   display: block;
-  font-family: var(--font-display); font-size: var(--step-2);
-  line-height: 1.08; color: var(--ink);
+  font-family: var(--font-display); font-size: clamp(var(--step-2), 2.2vw, var(--step-4));
+  line-height: 1.06; color: var(--ink);
 }
 .team-member__role {
-  display: block; margin-top: 0.4rem;
+  display: block; margin-top: 0.5rem;
   font-family: var(--font-sans); font-size: var(--step--1);
   letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink-muted);
 }
@@ -466,55 +468,31 @@
   flex: 0 0 auto; display: inline-flex; color: var(--ink-muted);
   transition: transform var(--dur-fast) var(--ease);
 }
-.team-member__chev svg { width: 22px; height: 22px; }
+.team-member__chev svg { width: clamp(22px, 2.4vw, 28px); height: clamp(22px, 2.4vw, 28px); }
 .team-member.is-open .team-member__chev { transform: rotate(180deg); }
 
 .team-member__media { position: relative; }
-.team-member__media .img-window { max-width: 300px; }
-.team-member__detail { margin-top: var(--space-s); }
+.team-member__media .img-window { max-width: 22rem; }
 .team-member__credit {
   font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase;
   color: var(--ink-faint); margin-top: 0.5rem;
 }
-.team-member__bio { margin-top: var(--space-m); max-width: 46ch; color: var(--ink-soft); }
+.team-member__bio { margin-top: var(--space-m); max-width: 60ch; color: var(--ink-soft); }
 
-/* Collapse to an accordion only when JS is active, on phones. */
-@media (max-width: 620px) {
-  html.js .team-member__detail { display: none; }
-  html.js .team-member.is-open .team-member__detail { display: block; }
-  /* the thumbnail is the collapsed-state stand-in; once open, the full
-     portrait takes over, so retire the thumbnail. */
-  html.js .team-member.is-open .team-member__thumb { display: none; }
-  .team-member + .team-member { border-top: 1px solid var(--rule); padding-top: var(--space-s); }
-}
+/* Collapse when JS is active (all widths); without JS everything shows.
+   Once open, the full portrait takes over from the thumbnail. */
+html.js .team-member__detail { display: none; }
+html.js .team-member.is-open .team-member__detail { display: block; margin-top: var(--space-m); padding-bottom: var(--space-l); }
+html.js .team-member.is-open .team-member__thumb { display: none; }
 
-/* Desktop: two portraits side by side (Option B) - photo on top, then
-   name/role/bio - sitting on the stone band. Left-aligned as a pair so the
-   block lines up with the eyebrow and the hero above. No accordion. */
-@media (min-width: 621px) {
-  .team-grid {
-    grid-template-columns: 1fr 1fr;   /* fill the band edge-to-edge, no empty right */
-    column-gap: clamp(2rem, 1.5rem + 2vw, 3.5rem);
-    align-items: start;
-  }
-  .team-member {
+/* Expanded view on wider screens: full portrait beside the bio. */
+@media (min-width: 700px) {
+  html.js .team-member.is-open .team-member__detail {
     display: grid;
-    grid-template-columns: 1fr;
-    grid-template-areas: "media" "head" "copy";
-    row-gap: var(--space-m);
+    grid-template-columns: minmax(0, 22rem) 1fr;
+    column-gap: clamp(2rem, 4vw, 4rem);
     align-items: start;
   }
-  /* Flatten the h3 + detail wrappers onto the card grid; the <button> keeps
-     its box (display:contents is ignored on buttons) and sits in "head". */
-  .team-member__head,
-  .team-member__detail { display: contents; }
-  .team-member__summary { grid-area: head; padding: 0; gap: 0; cursor: default; }
-  .team-member__thumb,
-  .team-member__chev { display: none; }
-  .team-member__media { grid-area: media; }
-  .team-member__media .img-window { width: 100%; max-width: none; } /* fill the column */
-  .team-member__copy { grid-area: copy; }
-  .team-member__bio { margin-top: 0; max-width: none; }
-  .team-member__name { font-size: var(--step-3); line-height: 1.05; }
-  .team-member__role { margin-top: 0.5rem; }
+  .team-member.is-open .team-member__media .img-window { max-width: none; }
+  .team-member.is-open .team-member__bio { margin-top: 0; }
 }
