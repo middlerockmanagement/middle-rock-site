@@ -515,14 +515,24 @@
   .team-member__role { margin-top: 0.5rem; }
 }
 
-/* Two members side by side once there's room - sized to the content and
-   centred as a pair, so the portraits sit in the middle rather than
-   hugging the left edge. */
+/* Wide screens: full-width editorial rows - a large portrait beside the
+   name + bio, with the sides alternating (Mandy photo-left, Corrine
+   photo-right). Fills the width and stays aligned with the page. */
 @media (min-width: 760px) {
-  .team-grid {
-    grid-template-columns: 1fr 1fr;       /* mirror the hero's two-column split above */
-    column-gap: clamp(2rem, 1rem + 3vw, 4rem);
+  .team-grid { gap: clamp(3rem, 2rem + 4vw, 6rem); }
+  .team-member {
+    grid-template-columns: minmax(0, 24rem) 1fr;
+    grid-template-rows: auto 1fr;
+    grid-template-areas: "media head" "media copy";
+    column-gap: clamp(2rem, 1rem + 5vw, 6rem);
+    row-gap: var(--space-m);
     align-items: start;
   }
-  .team-member__media .img-window { max-width: 22rem; } /* portrait sits left in its column */
+  .team-member__media .img-window { max-width: none; } /* fill the portrait column */
+  .team-member__copy { align-self: start; max-width: 46ch; }
+  /* Alternate: even rows put the portrait on the right. */
+  .team-member:nth-child(even) {
+    grid-template-columns: 1fr minmax(0, 24rem);
+    grid-template-areas: "head media" "copy media";
+  }
 }
