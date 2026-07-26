@@ -295,6 +295,81 @@ function inject(file, marker, content) {
   return true;
 }
 
+/* ------------------- structured data (JSON-LD) ----------------- */
+const SITE_URL = "https://www.middlerockmanagement.com";
+const ORG_ID = SITE_URL + "/#organization";
+
+function orgNode() {
+  return {
+    "@type": "Organization",
+    "@id": ORG_ID,
+    name: "Middle Rock Management",
+    url: SITE_URL + "/",
+    logo: SITE_URL + "/assets/brand/middle-rock-management-logo.png",
+    image: SITE_URL + "/assets/brand/social-share.jpg",
+    description: "A boutique entertainment management company representing writers, authors, producers, and creative teams.",
+    slogan: "intentional. innovative. invested.",
+    foundingDate: "2025",
+    sameAs: [SITE.linkedin, SITE.instagram],
+  };
+}
+function crumbs(trail) {
+  return {
+    "@type": "BreadcrumbList",
+    itemListElement: trail.map((t, i) => ({
+      "@type": "ListItem", position: i + 1, name: t.name, item: SITE_URL + t.path,
+    })),
+  };
+}
+function roleToTitle(role) {
+  return has(role) ? role.replace(/\.\s+/g, ", ").replace(/\.\s*$/, "") : "";
+}
+function personNode(name, jobTitle, links, image) {
+  const node = { "@type": "Person", name: name };
+  if (jobTitle) node.jobTitle = jobTitle;
+  const same = (links || []).filter(Boolean);
+  if (same.length) node.sameAs = same;
+  if (image && !/\.svg$/i.test(image)) node.image = SITE_URL + image;
+  node.worksFor = { "@id": ORG_ID };
+  return node;
+}
+function schemaScript(nodes) {
+  return '<script type="application/ld+json">\n' +
+    JSON.stringify({ "@context": "https://schema.org", "@graph": nodes }, null, 2) +
+    "\n  </script>";
+}
+function homeSchema() {
+  return schemaScript([
+    orgNode(),
+    { "@type": "WebSite", "@id": SITE_URL + "/#website", url: SITE_URL + "/", name: "Middle Rock Management", publisher: { "@id": ORG_ID } },
+  ]);
+}
+function aboutSchema(team) {
+  return schemaScript([
+    crumbs([{ name: "Home", path: "/" }, { name: "About", path: "/about/" }]),
+    ...team.map((m) => personNode(m.name, roleToTitle(m.role), [], m.image)),
+  ]);
+}
+function rocksSchema(clients) {
+  return schemaScript([
+    crumbs([{ name: "Home", path: "/" }, { name: "The Middle Rocks", path: "/the-middle-rocks/" }]),
+    {
+      "@type": "ItemList",
+      name: "The Middle Rocks",
+      itemListElement: clients.map((c, i) => ({
+        "@type": "ListItem", position: i + 1,
+        item: personNode(c.name, (c.disciplines || []).join(", "), [c.primaryUrl, c.secondaryUrl], c.image),
+      })),
+    },
+  ]);
+}
+function contactSchema() {
+  return schemaScript([
+    crumbs([{ name: "Home", path: "/" }, { name: "Contact", path: "/contact/" }]),
+    { "@type": "ContactPage", "@id": SITE_URL + "/contact/#webpage", url: SITE_URL + "/contact/", name: "Contact", about: { "@id": ORG_ID } },
+  ]);
+}
+
 /* --------------------------- run ------------------------------- */
 function main() {
   const clientsData = readJSON("data/clients.json");
@@ -339,7 +414,11 @@ function main() {
     ["the-middle-rocks/index.html", "FILTER", filterButtons(clients)],
     ["index.html", "HOME_ROSTER", homeRosterSection(featured)],
     ["index.html", "TEAM_PREVIEW", team.map((m) => miniMember(m)).join("\n")],
-    ["about/index.html", "TEAM", team.map((m) => teamMember(m)).join("\n")]
+    ["about/index.html", "TEAM", team.map((m) => teamMember(m)).join("\n")],
+    ["index.html", "SCHEMA", homeSchema()],
+    ["the-middle-rocks/index.html", "SCHEMA", rocksSchema(clients)],
+    ["about/index.html", "SCHEMA", aboutSchema(team)],
+    ["contact/index.html", "SCHEMA", contactSchema()]
   );
 
   let ok = 0;
