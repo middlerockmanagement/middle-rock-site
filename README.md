@@ -75,7 +75,6 @@ existing block and edit the fields:
   "primaryLabel": "IMDb",
   "secondaryUrl": null,
   "secondaryLabel": null,
-  "coManagement": null,
   "bio": null,
   "status": null,
   "featured": true,
@@ -93,7 +92,6 @@ Field guide:
 | `image` / `imageAlt` | Path to the portrait and its alt text. |
 | `primaryUrl` / `primaryLabel` | Main external link (opens in a new tab). Set `null` to hide. |
 | `secondaryUrl` / `secondaryLabel` | Optional second link. |
-| `coManagement` | e.g. `"Michael Swidler, 5x Media"`. Shows as a co-manager note. `null` to hide. |
 | `bio` | Optional short biography. `null` to hide. |
 | `status` | Optional label, e.g. `"On submission"`. `null` to hide. |
 | `featured` | `true` shows the client in the homepage preview (first 6 featured). |
@@ -157,6 +155,11 @@ recommended dimensions.
 ## 6. Deploy — GitHub + Vercel
 
 Your repo: **https://github.com/kshumanproof/middle-rock-gift**
+
+> This is a plain static site, so it deploys to **any** static host the same way —
+> **Cloudflare Pages, Netlify, Vercel, or GitHub Pages.** The steps below use Vercel as the
+> example; connecting the same repo to another host is nearly identical. See **Section 10** for
+> why switching hosts (or handing the whole thing to another developer) is straightforward.
 
 ### First-time setup — mostly done for you
 The repo is **already initialized**: there's one commit with every file, `origin` is set to your
@@ -243,6 +246,33 @@ a clean sans for body). If you and Amanda later want a distinctive self-hosted d
 (e.g. *Fraunces*), add the font files to `assets/fonts/`, declare them with `@font-face` at
 the top of `css/base.css`, and change the `--font-display` variable. Everything else updates
 automatically because all type flows from that one variable.
+
+---
+
+## 10. Taking it over later (built to be portable)
+
+This site is deliberately built so it is never locked to one person or one account. If Amanda
+ever wants a different developer to run it — or to take full control herself — here is why
+that is straightforward:
+
+- **It's a plain static site in a Git repo.** No framework, no database, no server, no
+  proprietary platform — just standard HTML, CSS, and vanilla JavaScript that any web developer
+  can read in minutes. All content is data-driven from `data/clients.json` and `data/team.json`,
+  and `build.js` (one small, dependency-free Node script) turns that into the finished pages.
+- **It runs on any static host, unchanged.** The exact same repo can be deployed to
+  **Cloudflare Pages, Netlify, Vercel, or GitHub Pages** in well under an hour — nothing to
+  rewrite or port. Whoever takes over just connects the repo to a host and it's live.
+- **Three things make it fully "yours":** the **domain** (already Amanda's — registered and
+  DNS-managed at Squarespace, with email on Google Workspace), the **code** (this repo), and the
+  **host account**. To keep it independent long-term, the repo (GitHub) and the host account
+  (e.g. Cloudflare Pages) should live under a Middle Rock–owned login, with any helper added as a
+  collaborator. Then handing it to a new developer is simply: give them the repo plus access to
+  the domain's DNS, and they're productive on day one.
+- **Everything a new developer needs is already in this README** — content edits (Sections 3–5),
+  preview and build (Sections 2–3), and deploy (Section 6). Start in `data/` for content and
+  `css/base.css` for the look.
+
+Bottom line: no single person is ever a single point of failure for keeping this site running.
 
 ---
 
