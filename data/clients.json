@@ -23,97 +23,23 @@
   ],
   "clients": [
     {
-      "id": "philip-asta",
-      "name": "Philip Asta",
+      "id": "carlo-nicdao",
+      "name": "Carlo Nicdao",
       "disciplines": [
-        "Author",
-        "Screenwriter"
+        "Screenwriter",
+        "Producer"
       ],
-      "image": "/assets/images/placeholders/philip-asta.webp",
-      "imageAlt": "Portrait of Philip Asta",
-      "primaryUrl": null,
-      "primaryLabel": null,
+      "image": "/assets/images/placeholders/carlo-nicdao.svg",
+      "imageAlt": "Portrait of Carlo Nicdao",
+      "primaryUrl": "https://www.imdb.com/name/nm17514410/",
+      "primaryLabel": "IMDb",
       "secondaryUrl": null,
       "secondaryLabel": null,
-      "coManagement": null,
+      "coManagement": "Michael Swidler, The Arlook Group",
       "bio": null,
       "status": null,
-      "featured": false,
+      "featured": true,
       "order": 10
-    },
-    {
-      "id": "lauren-astore",
-      "name": "Lauren Astore",
-      "disciplines": [
-        "Screenwriter"
-      ],
-      "image": "/assets/images/placeholders/lauren-astore.svg",
-      "imageAlt": "Portrait of Lauren Astore",
-      "primaryUrl": "https://www.imdb.com/name/nm4058966/",
-      "primaryLabel": "IMDb",
-      "secondaryUrl": null,
-      "secondaryLabel": null,
-      "coManagement": null,
-      "bio": null,
-      "status": null,
-      "featured": true,
-      "order": 20
-    },
-    {
-      "id": "pam-bassuk",
-      "name": "Pam Bassuk",
-      "disciplines": [
-        "Screenwriter"
-      ],
-      "image": "/assets/images/placeholders/pam-bassuk.webp",
-      "imageAlt": "Portrait of Pam Bassuk",
-      "primaryUrl": "https://www.pamandlindsay.com/",
-      "primaryLabel": "Website",
-      "secondaryUrl": null,
-      "secondaryLabel": null,
-      "coManagement": null,
-      "bio": null,
-      "status": null,
-      "featured": true,
-      "order": 30
-    },
-    {
-      "id": "tiff-campbell",
-      "name": "Tiff Campbell",
-      "disciplines": [
-        "Actress",
-        "Author",
-        "Screenwriter"
-      ],
-      "image": "/assets/images/placeholders/tiff-campbell.webp",
-      "imageAlt": "Portrait of Tiff Campbell",
-      "primaryUrl": "https://www.imdb.com/name/nm10945018/",
-      "primaryLabel": "IMDb",
-      "secondaryUrl": null,
-      "secondaryLabel": null,
-      "coManagement": null,
-      "bio": null,
-      "status": null,
-      "featured": true,
-      "order": 40
-    },
-    {
-      "id": "jake-carr",
-      "name": "Jake Carr",
-      "disciplines": [
-        "Author"
-      ],
-      "image": "/assets/images/placeholders/jake-carr.webp",
-      "imageAlt": "Portrait of Jake Carr",
-      "primaryUrl": "https://jaketreks.com/",
-      "primaryLabel": "Website",
-      "secondaryUrl": null,
-      "secondaryLabel": null,
-      "coManagement": null,
-      "bio": null,
-      "status": null,
-      "featured": true,
-      "order": 50
     },
     {
       "id": "cassi-jerkins",
@@ -131,7 +57,63 @@
       "bio": null,
       "status": null,
       "featured": true,
-      "order": 60
+      "order": 20
+    },
+    {
+      "id": "jake-carr",
+      "name": "Jake Carr",
+      "disciplines": [
+        "Author"
+      ],
+      "image": "/assets/images/placeholders/jake-carr.webp",
+      "imageAlt": "Portrait of Jake Carr",
+      "primaryUrl": "https://jaketreks.com/",
+      "primaryLabel": "Website",
+      "secondaryUrl": null,
+      "secondaryLabel": null,
+      "coManagement": null,
+      "bio": null,
+      "status": null,
+      "featured": true,
+      "order": 30
+    },
+    {
+      "id": "kris-shuman",
+      "name": "Kris Shuman",
+      "disciplines": [
+        "Screenwriter",
+        "Filmmaker",
+        "Producer"
+      ],
+      "image": "/assets/images/placeholders/kris-shuman.webp",
+      "imageAlt": "Portrait of Kris Shuman",
+      "primaryUrl": "https://krisshuman.com",
+      "primaryLabel": "Website",
+      "secondaryUrl": "https://www.imdb.com/name/nm15546725/",
+      "secondaryLabel": "IMDb",
+      "coManagement": null,
+      "bio": null,
+      "status": null,
+      "featured": false,
+      "order": 40
+    },
+    {
+      "id": "lauren-astore",
+      "name": "Lauren Astore",
+      "disciplines": [
+        "Screenwriter"
+      ],
+      "image": "/assets/images/placeholders/lauren-astore.svg",
+      "imageAlt": "Portrait of Lauren Astore",
+      "primaryUrl": "https://www.imdb.com/name/nm4058966/",
+      "primaryLabel": "IMDb",
+      "secondaryUrl": null,
+      "secondaryLabel": null,
+      "coManagement": "Michael Swidler, The Arlook Group",
+      "bio": null,
+      "status": null,
+      "featured": true,
+      "order": 50
     },
     {
       "id": "lindsay-jean-michelle",
@@ -149,18 +131,75 @@
       "bio": null,
       "status": null,
       "featured": false,
+      "order": 60
+    },
+    {
+      "id": "pam-bassuk",
+      "name": "Pam Bassuk",
+      "disciplines": [
+        "Screenwriter"
+      ],
+      "image": "/assets/images/placeholders/pam-bassuk.webp",
+      "imageAlt": "Portrait of Pam Bassuk",
+      "primaryUrl": "https://www.pamandlindsay.com/",
+      "primaryLabel": "Website",
+      "secondaryUrl": null,
+      "secondaryLabel": null,
+      "coManagement": null,
+      "bio": null,
+      "status": null,
+      "featured": true,
       "order": 70
     },
     {
-      "id": "carlo-nicdao",
-      "name": "Carlo Nicdao",
+      "id": "philip-asta",
+      "name": "Philip Asta",
       "disciplines": [
-        "Producer",
+        "Author",
         "Screenwriter"
       ],
-      "image": "/assets/images/placeholders/carlo-nicdao.svg",
-      "imageAlt": "Portrait of Carlo Nicdao",
-      "primaryUrl": "https://www.imdb.com/name/nm17514410/",
+      "image": "/assets/images/placeholders/philip-asta.webp",
+      "imageAlt": "Portrait of Philip Asta",
+      "primaryUrl": null,
+      "primaryLabel": null,
+      "secondaryUrl": null,
+      "secondaryLabel": null,
+      "coManagement": null,
+      "bio": null,
+      "status": null,
+      "featured": false,
+      "order": 80
+    },
+    {
+      "id": "phillipe-casseus",
+      "name": "Phillipe Casseus",
+      "disciplines": [
+        "Screenwriter",
+        "Director"
+      ],
+      "image": "/assets/images/placeholders/phillipe-casseus.svg",
+      "imageAlt": "Portrait of Phillipe Casseus",
+      "primaryUrl": null,
+      "primaryLabel": null,
+      "secondaryUrl": null,
+      "secondaryLabel": null,
+      "coManagement": null,
+      "bio": null,
+      "status": null,
+      "featured": false,
+      "order": 90
+    },
+    {
+      "id": "tiff-campbell",
+      "name": "Tiff Campbell",
+      "disciplines": [
+        "Author",
+        "Screenwriter",
+        "Actress"
+      ],
+      "image": "/assets/images/placeholders/tiff-campbell.webp",
+      "imageAlt": "Portrait of Tiff Campbell",
+      "primaryUrl": "https://www.imdb.com/name/nm10945018/",
       "primaryLabel": "IMDb",
       "secondaryUrl": null,
       "secondaryLabel": null,
@@ -168,7 +207,7 @@
       "bio": null,
       "status": null,
       "featured": true,
-      "order": 80
+      "order": 100
     },
     {
       "id": "tommy-schneiders",
@@ -186,60 +225,23 @@
       "bio": null,
       "status": null,
       "featured": false,
-      "order": 90
+      "order": 110
     },
     {
-      "id": "nathaniel-seybold",
-      "name": "Nathaniel Seybold",
+      "id": "zoe-salicrup-junco",
+      "name": "Zoé Salicrup Junco",
       "disciplines": [
-        "Voice Actor"
+        "Screenwriter",
+        "Director",
+        "Filmmaker"
       ],
-      "image": "/assets/images/placeholders/nathaniel-seybold.svg",
-      "imageAlt": "Portrait of Nathaniel Seybold",
+      "image": "/assets/images/placeholders/zoe-salicrup-junco.svg",
+      "imageAlt": "Portrait of Zoé Salicrup Junco",
       "primaryUrl": null,
       "primaryLabel": null,
       "secondaryUrl": null,
       "secondaryLabel": null,
-      "coManagement": null,
-      "bio": null,
-      "status": null,
-      "featured": false,
-      "order": 100
-    },
-    {
-      "id": "nathaniel-shriver",
-      "name": "Nathaniel Shriver",
-      "disciplines": [
-        "AD",
-        "Screenwriter"
-      ],
-      "image": "/assets/images/placeholders/nathaniel-shriver.webp",
-      "imageAlt": "Portrait of Nathaniel Shriver",
-      "primaryUrl": "https://www.imdb.com/name/nm3389374/",
-      "primaryLabel": "IMDb",
-      "secondaryUrl": null,
-      "secondaryLabel": null,
-      "coManagement": null,
-      "bio": null,
-      "status": null,
-      "featured": false,
-      "order": 110
-    },
-    {
-      "id": "kris-shuman",
-      "name": "Kris Shuman",
-      "disciplines": [
-        "Filmmaker",
-        "Producer",
-        "Screenwriter"
-      ],
-      "image": "/assets/images/placeholders/kris-shuman.webp",
-      "imageAlt": "Portrait of Kris Shuman",
-      "primaryUrl": "https://krisshuman.com",
-      "primaryLabel": "Website",
-      "secondaryUrl": "https://www.imdb.com/name/nm15546725/",
-      "secondaryLabel": "IMDb",
-      "coManagement": null,
+      "coManagement": "Michael Swidler, The Arlook Group",
       "bio": null,
       "status": null,
       "featured": false,

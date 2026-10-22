@@ -82,6 +82,7 @@ function rosterCard(c) {
   lines.push(`                <img src="${attr(c.image)}" alt="${alt}" width="640" height="800" loading="lazy" decoding="async">`);
   lines.push(`              </div>`);
   lines.push(`            </div>`);
+  if (has(c.coManagement)) lines.push(`            <p class="card__comanager">Co-Manager: ${esc(c.coManagement)}</p>`);
   if (has(c.bio)) lines.push(`            <p class="card__bio">${esc(c.bio)}</p>`);
   const links = [];
   if (has(c.primaryUrl)) links.push([c.primaryUrl, c.primaryLabel || "Profile"]);
@@ -208,7 +209,7 @@ function header(activeKey) {
         <div class="container container--wide site-header__inner">
           <a class="masthead-brand" href="/" aria-label="Middle Rock Management home">
             <img class="brand__logo" src="${SITE.logo}" alt="Middle Rock Management" width="1141" height="1014">
-            <span class="brand__descriptor">Boutique entertainment management</span>
+            <span class="brand__descriptor">Boutique Artist Management</span>
           </a>
           <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav" aria-label="Open menu" data-nav-toggle>
             <svg class="icon-open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
@@ -234,7 +235,8 @@ function footer() {
           <div class="footer__cta-text">
             <p class="eyebrow footer__cta-eyebrow">Get in touch</p>
             <a class="footer__email" data-e-user="${SITE.emailUser}" data-e-domain="${SITE.emailDomain}" href="/contact/">Email us <span class="footer__email-arrow" aria-hidden="true">&rarr;</span></a>
-            <p class="footer__policy"><strong>We are not currently accepting unsolicited submissions.</strong> Any unsolicited material sent via email or form will be deleted.</p>
+            <p class="footer__cta-deck">For representation questions, press, and general business inquiries, we&rsquo;d love to hear from you.</p>
+            <p class="footer__policy"><strong>We are not currently accepting unsolicited submissions.</strong><br>Any unsolicited material sent via email or form will be deleted.</p>
           </div>
         </div>
 

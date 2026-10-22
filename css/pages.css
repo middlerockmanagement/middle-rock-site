@@ -15,7 +15,7 @@
   justify-items: center;
   text-align: center;
   gap: clamp(1.5rem, 3.2vh, 3rem);
-  padding-block: clamp(2.5rem, 6vh, 5.5rem);
+  padding-block: clamp(2.5rem, 6vh, 5.5rem) clamp(4.5rem, 11vh, 8.5rem);
 }
 .hero__logo-link { display: inline-block; }
 .hero__logo { height: clamp(170px, 32vw, 360px); width: auto; }
@@ -305,8 +305,15 @@
 .page-header__eyebrow { margin-bottom: var(--space-m); display: inline-block; }
 
 /* --------------------------- Contact page ---------------------- */
-/* Contact is a minimal hero (eyebrow + title + copy) reusing the
-   .about-hero title/deck styles; the footer CTA carries the action. */
+/* Contact combines into one CTA card (Email us + deck + policy), styled
+   like the homepage footer CTA. The shared footer CTA is hidden here so it
+   isn't shown twice; other pages keep their footer CTA untouched. */
+.contact-page .site-footer .footer__cta { display: none; }
+.contact-cta__deck {
+  margin-top: var(--space-m);
+  max-width: 46ch;
+  color: color-mix(in srgb, var(--ink-invert) 80%, transparent);
+}
 
 /* --------------------------- 404 ------------------------------- */
 .error-page {

@@ -13,10 +13,10 @@
   --ink-faint:  #a49d96;   /* captions, disabled */
   --rule:       #e2ddd6;   /* hairline rules */
   --rule-strong:#c9c2ba;
-  --paper:      #f6f4ef;   /* warm white page background */
+  --paper:      #faf8f3;   /* warm white page background (lightened a touch) */
   --paper-pure: #ffffff;
-  --paper-deep: #efece5;   /* alternating section tint */
-  --ink-invert: #f6f4ef;   /* text on dark */
+  --paper-deep: #f3f0e9;   /* alternating section tint */
+  --ink-invert: #faf8f3;   /* text on dark */
   --panel-dark: #16130f;   /* dark editorial panel */
   --panel-soft: #e4ddd0;   /* soft warm-stone panel (light alt to panel-dark) */
 

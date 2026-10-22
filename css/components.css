@@ -203,6 +203,7 @@
   transition: border-color var(--dur-fast) var(--ease);
 }
 .footer__email:hover, .footer__email:focus-visible { border-bottom-color: currentColor; }
+.footer__cta-deck { margin-top: var(--space-m); max-width: 46ch; color: color-mix(in srgb, var(--ink-invert) 80%, transparent); }
 .footer__policy { margin-top: var(--space-m); max-width: 46ch; color: color-mix(in srgb, var(--ink-invert) 68%, transparent); }
 .footer__policy strong { color: var(--ink-invert); }
 .footer__logo-link { display: inline-block; justify-self: center; align-self: center; }
@@ -355,6 +356,7 @@
   letter-spacing: 0.02em; margin-top: 0.35rem;
 }
 .card__disciplines .sep { color: var(--ink-faint); padding-inline: 0.15em; }
+.card__comanager { font-size: 0.78rem; letter-spacing: 0.02em; color: var(--ink-muted); margin-top: 0.6rem; }
 .card__bio { font-size: var(--step--1); color: var(--ink-soft); margin-top: 0.6rem; }
 .card__links { display: flex; flex-wrap: wrap; gap: 0.4rem 1.1rem; margin-top: 0.7rem; }
 .card__link {
@@ -386,9 +388,10 @@
   .card__summary { order: 2; display: block; cursor: default; }
   .card__thumb, .card__chev { display: none; }
   .card__media { order: 1; }
-  .card__bio { order: 3; }
-  .card__links { order: 4; }
-  .card__status { order: 5; }
+  .card__comanager { order: 3; }
+  .card__bio { order: 4; }
+  .card__links { order: 5; }
+  .card__status { order: 6; }
 
   /* Colourise the portrait whenever the cursor is anywhere over the card -
      the image, name, professions, or the link below - so it holds while you
@@ -473,7 +476,8 @@
 
 .team-member__media .img-window { aspect-ratio: 4 / 5; }
 .team-member__media .img-window img { object-position: center 20%; }
-.team-member__bio { margin-top: var(--space-m); max-width: 60ch; color: var(--ink-soft); }
+.team-member__copy { background: var(--panel-soft); padding: var(--space-s) var(--space-m); margin-top: var(--space-s); }
+.team-member__bio { max-width: 60ch; color: var(--ink-soft); }
 #corrine-ashley .team-member__thumb img,
 #corrine-ashley .team-member__media .img-window img { object-position: center top; }
 
@@ -490,22 +494,27 @@
   .team-grid {
     grid-template-columns: 1fr 1fr;
     gap: clamp(1.75rem, 1rem + 3vw, 4rem);
-    align-items: start;
+    align-items: stretch;   /* both cards take the taller one's height */
   }
   .team-member {
     border-top: 0;
     display: grid;
     grid-template-columns: 1fr;
     grid-template-areas: "media" "id" "copy";
-    row-gap: var(--space-m);
+    grid-template-rows: auto auto 1fr;   /* copy panel fills, so the tan blocks end even */
+    row-gap: 0;
   }
   .team-member__head,
   .team-member__detail { display: contents; }
-  .team-member__summary { grid-area: id; padding: 0; gap: 0; cursor: default; display: block; }
+  .team-member__summary {
+    grid-area: id; gap: 0; cursor: default; display: block;
+    background: var(--panel-soft);
+    padding: var(--space-m) var(--space-m) 0;
+  }
   .team-member__thumb,
   .team-member__chev { display: none; }
   .team-member__media { grid-area: media; }
   .team-member__media .img-window { aspect-ratio: 1 / 1; }   /* square on desktop */
-  .team-member__copy { grid-area: copy; }
+  .team-member__copy { grid-area: copy; margin-top: 0; padding: var(--space-s) var(--space-m) var(--space-m); }
   .team-member__bio { margin-top: 0; }
 }
