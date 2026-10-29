@@ -29,7 +29,7 @@
         "Screenwriter",
         "Producer"
       ],
-      "image": "/assets/images/placeholders/carlo-nicdao.svg",
+      "image": "/assets/images/placeholders/carlo-nicdao.webp",
       "imageAlt": "Portrait of Carlo Nicdao",
       "primaryUrl": "https://www.imdb.com/name/nm17514410/",
       "primaryLabel": "IMDb",
@@ -103,7 +103,7 @@
       "disciplines": [
         "Screenwriter"
       ],
-      "image": "/assets/images/placeholders/lauren-astore.svg",
+      "image": "/assets/images/placeholders/lauren-astore.webp",
       "imageAlt": "Portrait of Lauren Astore",
       "primaryUrl": "https://www.imdb.com/name/nm4058966/",
       "primaryLabel": "IMDb",
@@ -177,7 +177,7 @@
         "Screenwriter",
         "Director"
       ],
-      "image": "/assets/images/placeholders/phillipe-casseus.svg",
+      "image": "/assets/images/placeholders/phillipe-casseus.webp",
       "imageAlt": "Portrait of Phillipe Casseus",
       "primaryUrl": null,
       "primaryLabel": null,
@@ -235,7 +235,7 @@
         "Director",
         "Filmmaker"
       ],
-      "image": "/assets/images/placeholders/zoe-salicrup-junco.svg",
+      "image": "/assets/images/placeholders/zoe-salicrup-junco.webp",
       "imageAlt": "Portrait of Zoé Salicrup Junco",
       "primaryUrl": null,
       "primaryLabel": null,

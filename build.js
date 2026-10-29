@@ -123,6 +123,7 @@ function teamMember(m) {
   lines.push(`            <div class="team-member__media">`);
   lines.push(`              <div class="img-window img-mono">`);
   lines.push(`                <img src="${attr(m.image)}" alt="${alt}" width="600" height="800" loading="lazy" decoding="async">`);
+  if (has(m.photoCredit)) lines.push(`                <span class="photo-credit">Photo: ${esc(m.photoCredit)}</span>`);
   lines.push(`              </div>`);
   lines.push(`            </div>`);
   lines.push(`            <div class="team-member__copy">`);
@@ -140,6 +141,7 @@ function miniMember(m) {
   lines.push(`        <article class="mini-member">`);
   lines.push(`          <div class="img-window ratio-4-5 img-mono mini-member__media">`);
   lines.push(`            <img src="${attr(m.image)}" alt="${attr(m.imageAlt || ("Portrait of " + m.name))}" width="640" height="800" loading="lazy" decoding="async">`);
+  if (has(m.photoCredit)) lines.push(`            <span class="photo-credit">Photo: ${esc(m.photoCredit)}</span>`);
   lines.push(`          </div>`);
   lines.push(`          <h3 class="mini-member__name">${esc(m.name)}</h3>`);
   if (has(m.role)) lines.push(`          <p class="mini-member__role">${esc(m.role)}</p>`);
